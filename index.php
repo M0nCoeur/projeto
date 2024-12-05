@@ -21,7 +21,7 @@ session_start();
             </p>
             <ul>
                 <li><a href="#games">Jogos</a></li>
-                <li><a href="#galery">Notícias</a></li>
+                <li><a href="#galery">Notíciass</a></li>
                 <li><a href="#about">Sobre</a></li>
               
 
