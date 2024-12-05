@@ -33,6 +33,7 @@ session_start();
                             <i class="uil uil-user-circle"></i>
                         </div>
                         <ul class="dropdown-menu">
+                          git123451235
                             <li><a href="myaccount.php">Minha Conta</a></li>
                             <li><a href="favorites.php">Jogos Favoritos</a></li>
                             <li><a href="reviews.php">Minhas Avaliações</a></li>
