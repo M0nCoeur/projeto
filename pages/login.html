@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/styles/login.css" />
+    <title>GameVerse - Login</title>
+  </head>
+  <body>
+    <header>
+      <div class="content">
+          <nav>
+            <p class="brand">
+              <a href="/index.html">Game<strong>Verse</strong></a>
+          </p>
+              <ul>
+                  <li><a href="/index.html#games">Jogos</a></li>
+                  <li><a href="/index.html#galery">Notícias</a></li>
+                  <li><a href="/index.html#about">Sobre</a></li>
+                  <button onclick="window.location.href='/pages/login.html'">Entrar</button>
+
+              </ul>
+          </nav>
+    </header>
+    <div class="container">
+      <div class="forms">
+
+        <!-- Login Form -->
+        <div class="form login">
+          <span class="title">Acesse sua conta</span>
+
+          <form action="#" method="post">
+            <div class="input-field">
+              <label for="email">
+              <input type="email" name="email" id="email" placeholder="E-mail"/>
+            </label>
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <label for="password">
+              <input type="password" class="password" name="password" id="password" placeholder="Senha" required minlength="8" maxlength="20" />
+            </label>
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="logCheck" />
+                <label for="logCheck" class="text">Lembrar-me</label>
+              </div>
+
+              <!-- <a href="#" class="text">Esqueceu sua senha?</a> -->
+            </div>
+
+            <div class="input-field button">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+
+          <div class="login-signup">
+            <span class="text"
+              >Não é um membro?
+              <a href="#" class="text signup-link">Cadastre-se aqui</a>
+            </span>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form signup">
+          <span class="title">Criar conta</span>
+
+          <form action="cadastro.php" method="GET">
+            <div class="input-field">
+              <label for="name">
+              <input type="text" name="name" id="name" placeholder="Nome" required  maxlength="100" />
+            </label>
+              <i class="uil uil-user"></i>
+            </div>
+            <div class="input-field">
+              <label for="email">
+              <input type="email" name="email" id="email" placeholder="E-mail" required />
+            </label>
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <label for="pass">
+              <input type="password" class="password" name="pass" id="pass" placeholder="Crie uma senha" required minlength="8" maxlength="20"/>
+            </label>
+              <i class="uil uil-lock icon"></i>
+            </div>
+            <div class="input-field">
+              <label for="pass">
+              <input type="password" class="password" name="pass" id="pass" placeholder="Confirme a senha" required minlength="8" maxlength="20"/>
+            </label>
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="termCon" />
+                <label for="termCon" class="text">Aceito todos os termos e condições</label>
+              </div>
+            </div>
+
+            <div class="input-field button">
+              <input type="submit" value="Cadastrar" />
+            </div>
+          </form>
+
+          <div class="login-signup">
+            <span class="text"
+              >Já possui uma conta?
+              <a href="#" class="text login-link">Entre aqui</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="main">
+          <div class="content footer-links">
+            <div class="footer-company">
+              <h4>Nosso Site</h4>
+              <h6>Sobre</h6>
+              <h6>Contato</h6>
+            </div>
+              <div class="footer-social">
+                <h4>Mantenha-se Conectado</h4>
+                <div class="social-icons">
+                  <img src="/assets/instagram.png" alt="Instagram">
+                  <img src="/assets/facebook.png" alt="Facebook">
+                  <img src="/assets/whatsapp-svgrepo-com.png" alt="Whatsapp">
+                </div>
+              </div>
+              <div class="footer-contact">
+                <h4>Nosso Contato</h4>
+                <h6>+55 31 988776644</h6>
+                <h6>turma0043@gmail.com</h6>
+                <h6>R. Paineiras, 1300 - Eldorado, Contagem - MG</h6>
+              </div>
+            </div>
+          </div>
+          <div class="last">
+            GameVerse
+          </div>
+    </footer>
+    <script src="/scripts/login.js"></script>
+  </body>
+</html>

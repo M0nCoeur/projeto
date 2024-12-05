@@ -1,0 +1,758 @@
+/* font import*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --orange: #f78b00;
+    --blue: #00285f;
+    --gray: #ededed;
+}
+
+/*Config-Geral*/
+
+html, 
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background: radial-gradient(#ffce8e, #f78b00);
+    scroll-behavior: smooth;
+}
+
+/*Cabeçalho*/
+
+header {
+    width: 100%;
+    height: 500px;
+    background: white;
+    box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    max-width: 1000px;
+    min-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/*Navegação*/
+
+nav {
+    width: 100%;
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand  {
+    font-size: 24px;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.brand a {
+    text-decoration: none;
+}
+
+.brand a:visited {
+    color: inherit; /* Garante que a cor não mude após clicar */
+}
+
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;  /* Alinha todos os itens verticalmente ao centro */
+    justify-content: flex-start;  /* Alinha à esquerda */
+    margin-right: 20px;  /* Garantir um pequeno espaço da direita */
+}
+
+nav ul li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;  /* Alinha o texto e o ícone no centro */
+}
+
+nav ul li span {
+    color: var(--orange);  /* Cor do texto */
+    font-weight: bold;  
+    font-size: 1.2em;  
+    padding: 5px 10px;  
+    border-radius: 5px;  
+}
+
+nav ul li a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #00285f83;
+}
+
+nav ul button {
+    border: 1px solid var(--blue);
+    background: transparent;
+    padding: 8px 40px;
+    cursor: pointer;
+    margin-left: 30px;
+    color:  var(--blue);
+    font-weight: bold;
+    border-radius: 4px;
+
+}
+
+nav ul button:hover {
+    transition: background, color 0.5s;
+    background: var(--blue);
+    color: white;
+}
+
+/* Login/Logout Button Styles */
+.login-button, .logout-button {
+    background-color: #4CAF50; /* Cor padrão para o botão de login */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.logout-button {
+    background-color: #f44336; /* Cor para logout */
+}
+
+/* Hover effects */
+.login-button:hover, .logout-button:hover {
+    opacity: 0.8;
+}
+
+.content .header-block {
+    max-width: 1000px;
+    min-width: 300px;
+    height: 470px;
+    position: relative;
+    z-index: 10;
+    padding: 10px;
+}
+
+.header-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+}
+
+.carousel-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.imagens-header {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-header img {
+    width: 1000px;
+    height: 470px;
+}
+
+.button-header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev-header {
+    left: 10px;
+}
+
+.next-header {
+    right: 10px;
+}
+
+.fade-header {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade-header {
+    from {opacity: 0.4}
+    to {opacity: 1}
+ }
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Contêiner que agrupa o nome do usuário e o ícone */
+.user-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    
+}
+
+.user-container:hover {
+        transition: 0.3s ease;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* Ícone do usuário */
+.user-icon {
+    margin-left: 5px;
+    font-size: 14px;
+    color: var(--blue);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none; /* Oculto por padrão */
+    position: absolute;
+    top: 35px; /* Alinha abaixo do nome */
+    right: 0; /* Alinha à direita do dropdown */
+    background-color: white;
+    border: 1px solid #ddd;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+/* Links no dropdown */
+.dropdown-menu li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--blue);
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--orange);
+    color: white;
+    border-radius: 5px;
+}
+
+/* Exibir o menu quando a classe "active" for adicionada */
+.dropdown.active .dropdown-menu {
+    display: block;
+}
+
+/* Catalogo */
+
+section .title-wrapper-catalog {
+    color:var(--blue);
+}
+
+section .catalog {
+    width: 100%;
+    padding: 100px;
+}
+
+section .filter-card {
+    width: 980px;
+    height: 100px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input{
+    width: 700px;
+    height: 50px;
+    border: none;
+    border: 4px 0px 0px 4px;
+    text-indent: 10px;
+}
+
+.search-button {
+    width: 150px;
+    height: 50px;
+    border-radius: 0px 4px 4px 0px;
+    border: none;
+    background: var(--blue);
+    color: white;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: 0.3s ease;
+}
+
+.search-button:hover {
+    background: #d3d2d2;
+    color: var(--blue);
+}
+
+.title-wrapper-catalog {
+    margin-top: 200px;
+    padding-bottom: 20px;
+}
+
+section .card-wrapper {
+    max-width: 1000px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-gap: 30px;
+    padding-top: 50px;
+    
+}
+
+/* Card Adventure*/
+
+section .card-item {
+    height: 400px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 14px #0c0c0c;
+    
+}
+
+.card-content {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-item img {
+    width: 85%;
+    margin-top: 20px;
+}
+
+.card-item h4 {
+    width: 90%;
+}
+
+.card-item p {
+    width: 90%;
+    font-style: italic;
+    color: #00000070;
+    margin-bottom: 5px;
+}
+
+.card-item button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background: var(--blue);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.card-item button:hover {
+    background: #ededed;
+    color: var(--blue);
+}
+
+/* Card Administração*/
+
+section .card-adm {
+    height: 400px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 14px #0c0c0c;
+}
+
+.card-content-adm {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.card-adm img {
+    width: 70%;
+    margin-top: 10px;
+}
+
+.card-adm h4 {
+    width: 90%;
+}
+
+.card-adm p {
+    width: 90%;
+    font-style: italic;
+    color: #00000070;
+    margin-bottom: 5px;
+}
+
+.card-adm button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background: var(--blue);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.card-adm button:hover {
+    background: #ededed;
+    color: var(--blue);
+}
+
+/* Card Security*/
+
+section .card-sec {
+    height: 400px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 14px #0c0c0c;
+}
+
+.card-content-sec {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.card-sec img {
+    width: 48%;
+    margin-top: 40px;
+}
+
+.card-sec h4 {
+    width: 90%;
+    margin-bottom: 5px;
+}
+
+.card-sec p {
+    width: 90%;
+    font-style: italic;
+    color: #00000070;
+    margin-bottom: 5px;
+}
+
+.card-sec button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background: var(--blue);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.card-sec button:hover {
+    background: #ededed;
+    color: var(--blue);
+}
+
+/*Notícias*/
+
+section .texto {
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.galery {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.imagens {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel img {
+    width: 1000px;
+    height: 470px;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+ }
+
+/*Sobre*/
+
+.features {
+    width: 100%;
+    height:  100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px;
+}
+
+.title-wrapper-features {
+    padding: 20px 0px;
+}
+
+.feature-card-block {
+    max-width: 1000px;
+    min-width: 300px;
+    height: 600px;
+    background: var(--gray);
+    margin: 0 auto;
+    border-radius: 8px;
+    z-index: 10;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    grid-gap: 30px;
+}
+
+.feature-card-item {
+    max-width: 420px;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #dedede3b;
+    border-radius: 4px;
+}
+
+.feature-text-content {
+    max-width: 60%;
+    margin: 5px;
+}
+
+.feature-card-item img {
+    width: 64px;
+    height: 64px;
+}
+
+/*Rodapé*/
+
+footer {
+    width: 100%;
+    height: 250px;
+}
+
+footer .main {
+    width: 100%;
+    height: 200px;
+    background-color: var(--orange);
+    padding: 20px 0px;
+}
+
+.footer-links {
+    max-width: 1000px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.footer-company, .footer-rental, .footer-contact, .footer-social {
+    color: white;
+    height: 100%;
+    min-height: 100px;   
+}
+
+.footer-links h4 {
+    margin-bottom: 10px;
+}
+
+.footer-links h6 {
+    margin-bottom: 8px;
+}
+
+.main .footer-social img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+footer .last {
+    width: 100%;
+    height: 50px;
+    background: var(--blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Resposividade*/
+
+@media (max-width: 576px) {
+    nav ul li {
+        display: none;
+    }
+
+    .header-block img {
+        width: 540px;
+    }
+
+    .header-block .text {
+        position: absolute;
+        bottom: 10%;
+        left: 15%;
+    }
+
+    section .filter-card {
+        width: 390px;
+        padding: 0px 10px;
+    }
+
+    .search-input {
+        max-width: 700px;
+        min-width: 240px;
+    }
+
+    .search-button {
+        max-width: 150px;
+        min-width: 80px;
+    }
+
+    .card-item img {
+        width: 50%;
+        padding: 0px 10px;
+    }
+    .card-adm img {
+        width: 50%;
+        padding: 0px 10px;
+    }
+    .card-sec img {
+        width: 30%;
+        padding: 0px 10px;
+    }
+
+    .galery {
+        margin-top: 100px;
+    }
+
+    .galery img {
+        width: 390px;
+        padding: 0px 10px;
+    }
+
+    .texto {
+        margin-bottom: 20px;
+    }
+
+    .galery-content {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .features {
+        height: 100%;
+    }
+
+    .feature-card-block {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        height: 100%;
+    }
+
+    footer .main {
+        height: 100%;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        padding-left: 10%;
+    }
+}

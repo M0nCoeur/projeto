@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVerse - Home</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/scripts/script-header.js">
+    </script>
+</head>
+<body>
+    <header>
+        <div class="content">
+            <nav>
+              <p class="brand">
+                <a href="/index.html">Game<strong>Verse</strong></a>
+            </p>            
+                <ul>
+                    <li><a href="#games">Jogos</a></li>
+                    <li><a href="#galery">Notícias</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <button onclick="window.location.href='/pages/login.html'">Entrar</button>
+
+                </ul>
+            </nav>
+            <div class="header-block">
+              <div class="carousel-header">
+                <div class="imagens-header fade-header">
+                  <img src="/assets/Group 1.png" alt="Imagem1">
+                  <img src="/assets/Group 2.png" alt="Imagem2">
+                  <img src="/assets/lançamento1.png" alt="Imagem3">
+              </div>
+              <button class="button-header prev-header" onclick ='move(-1)'>&#10094;</button>
+              <button class="button-header next-header" onclick ='move(1)'>&#10095;</button>
+        </div>
+    </header>
+    <section class="catalog" id="games">
+        <div class="content">
+          <div class="title-wrapper-catalog">
+            <p>Encontre seu jogo favorito</p>
+            <h3>Jogos</h3>
+          </div>
+          <div class="filter-card">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Digite o nome do jogo.."
+            />
+            <button class="search-button">Buscar</button>
+          </div>
+          <div class="card-wrapper">
+            <div class="card-item">
+              <img src="/assets/Academic Adventure.png" alt="adventure" />
+              <div class="card-content">
+                <h3>Academic Adventure</h3>
+                <p>
+                  Academic Adventure é um jogo de aventura se passando no Senac para conquisar um certificado.
+                </p>
+                <button type="button">Veja Mais</button>
+              </div>
+            </div>
+            <div class="card-adm">
+              <img src="/assets/adm.png" alt="adm" />
+              <div class="card-content-adm">
+                <h3>Academic Administração</h3>
+                <p>Academic Adventure é um jogo de aventura se passando no Senac para conquisar um certificado.
+                </p>
+                <button type="button">Em Breve...</button>
+              </div>
+            </div>
+            <div class="card-sec">
+              <img src="/assets/security.png" alt="sec" />
+              <div class="card-content-sec">
+                <h3>Academic Security</h3>
+                <p>Academic Adventure é um jogo de aventura se passando no Senac para conquisar um certificado.
+                </p>
+                <button type="button">Em Breve...</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="galery" id="galery">
+        <div class="content">
+          <div class="texto">
+            <p>Veja nossas principais notícias</p>
+            <h3>Notícias</h3>
+          </div>
+          <div class="carousel">
+            <div class="imagens fade">
+              <img src="/assets/Group 1.png" alt="Imagem1">
+              <img src="/assets/Group 2.png" alt="Imagem2">
+              <img src="/assets/lançamento1.png" alt="Imagem3">
+          </div>
+          <button class="button prev" onclick ='move(-1)'>&#10094;</button>
+          <button class="button next" onclick ='move(1)'>&#10095;</button>
+        </div>
+      </section>
+
+      <section class="features" id="about">
+        <div class="content">
+          <div class="title-wrapper-features">
+            <p>Conheça sobre nosso site</p>
+            <h3>Sobre</h3>
+          </div>
+          <div class="feature-card-block">
+            <div class="feature-card-item">
+              <img src="/assets/hello_5110575.png" alt="welcome">
+              <div class="feature-text-content">
+                <h3>Bem-vindo ao GameVerse</h3>
+                <p>Sua fonte definitiva sobre jogos acadêmicos.</p>
+              </div>
+            </div>            
+            <div class="feature-card-item">
+              <img src="/assets/history_1825422.png" alt="Feature">
+              <div class="feature-text-content">
+                <h3>Nossa História</h3>
+                <p>Criado em 2023, unimos tecnologia e jogos para promover aprendizado e diversão.</p>
+              </div>
+            </div>            
+            <div class="feature-card-item">
+              <img src="/assets/business-teamwork_17612865.png" alt="Feature">
+              <div class="feature-text-content">
+                <h3>Equipe</h3>
+                <p>Formada por entusiastas na área de tecnologia, nossa equipe garante conteúdo exclusivo sobre jogos acadêmicos.</p>
+              </div>
+            </div>            
+            <div class="feature-card-item">
+              <img src="/assets/goal_6756991.png" alt="Feature">
+              <div class="feature-text-content">
+                <h3>Nossos Objetivos</h3>
+                <p>Queremos ajudar você a aprimorar suas habilidades e aproveitar ao máximo sua experiência de jogo.</p>
+              </div>
+            </div>
+            <div class="feature-card-item">
+              <img src="/assets/impact_11152615.png" alt="Feature">
+              <div class="feature-text-content">
+                <h3>Nossos Valores</h3>
+                <p>Valorizamos a integridade, estamos comprometidos em fornecer conteúdo honesto e de qualidade.</p>
+              </div>
+            </div>            
+            <div class="feature-card-item">
+              <img src="/assets/telephone-call_3059457.png" alt="Feature">
+              <div class="feature-text-content">
+                <h3>Entre em Contato</h3>
+                <p>Estamos prontos para ouvir você. Entre em contato conosco, faça uma parceria de sucesso.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="main">
+            <div class="content footer-links">
+              <div class="footer-company">
+                <h4>Nosso Site</h4>
+                <h6>Sobre</h6>
+                <h6>Contato</h6>
+              </div>
+                <div class="footer-social">
+                  <h4>Mantenha-se Conectado</h4>
+                  <div class="social-icons">
+                    <img src="/assets/instagram.png" alt="Instagram">
+                    <img src="/assets/facebook.png" alt="Facebook">
+                    <img src="/assets/whatsapp-svgrepo-com.png" alt="Whatsapp">
+                  </div>
+                </div>
+                <div class="footer-contact">
+                  <h4>Nosso Contato</h4>
+                  <h6>+55 31 988776644</h6>
+                  <h6>turma0043@gmail.com</h6>
+                  <h6>R. Paineiras, 1300 - Eldorado, Contagem - MG</h6>
+                </div>
+              </div>
+            </div>
+            <div class="last">
+              GameVerse
+            </div>
+      </footer>
+</body>
+</html>
