@@ -1,5 +1,6 @@
 /* font import*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
@@ -16,7 +17,7 @@
 
 /*Config-Geral*/
 
-html, 
+html,
 body {
     width: 100%;
     overflow-x: hidden;
@@ -55,7 +56,7 @@ nav {
     justify-content: space-between;
 }
 
-.brand  {
+.brand {
     font-size: 24px;
     color: var(--blue);
     cursor: pointer;
@@ -66,16 +67,20 @@ nav {
 }
 
 .brand a:visited {
-    color: inherit; /* Garante que a cor não mude após clicar */
+    color: inherit;
+    /* Garante que a cor não mude após clicar */
 }
 
 
 nav ul {
     display: flex;
     flex-direction: row;
-    align-items: center;  /* Alinha todos os itens verticalmente ao centro */
-    justify-content: flex-start;  /* Alinha à esquerda */
-    margin-right: 20px;  /* Garantir um pequeno espaço da direita */
+    align-items: center;
+    /* Alinha todos os itens verticalmente ao centro */
+    justify-content: flex-start;
+    /* Alinha à esquerda */
+    margin-right: 20px;
+    /* Garantir um pequeno espaço da direita */
 }
 
 nav ul li {
@@ -83,15 +88,17 @@ nav ul li {
     padding: 10px;
     cursor: pointer;
     display: flex;
-    align-items: center;  /* Alinha o texto e o ícone no centro */
+    align-items: center;
+    /* Alinha o texto e o ícone no centro */
 }
 
 nav ul li span {
-    color: var(--orange);  /* Cor do texto */
-    font-weight: bold;  
-    font-size: 1.2em;  
-    padding: 5px 10px;  
-    border-radius: 5px;  
+    color: var(--orange);
+    /* Cor do texto */
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 nav ul li a {
@@ -109,7 +116,7 @@ nav ul button {
     padding: 8px 40px;
     cursor: pointer;
     margin-left: 30px;
-    color:  var(--blue);
+    color: var(--blue);
     font-weight: bold;
     border-radius: 4px;
 
@@ -122,8 +129,10 @@ nav ul button:hover {
 }
 
 /* Login/Logout Button Styles */
-.login-button, .logout-button {
-    background-color: #4CAF50; /* Cor padrão para o botão de login */
+.login-button,
+.logout-button {
+    background-color: #4CAF50;
+    /* Cor padrão para o botão de login */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -133,11 +142,13 @@ nav ul button:hover {
 }
 
 .logout-button {
-    background-color: #f44336; /* Cor para logout */
+    background-color: #f44336;
+    /* Cor para logout */
 }
 
 /* Hover effects */
-.login-button:hover, .logout-button:hover {
+.login-button:hover,
+.logout-button:hover {
     opacity: 0.8;
 }
 
@@ -200,9 +211,14 @@ nav ul button:hover {
 }
 
 @keyframes fade-header {
-    from {opacity: 0.4}
-    to {opacity: 1}
- }
+    from {
+        opacity: 0.4
+    }
+
+    to {
+        opacity: 1
+    }
+}
 
 /* Dropdown container */
 .dropdown {
@@ -216,7 +232,7 @@ nav ul button:hover {
     align-items: center;
     cursor: pointer;
     padding: 5px 10px;
-    
+
 }
 
 .user-container:hover {
@@ -234,10 +250,13 @@ nav ul button:hover {
 
 /* Dropdown menu */
 .dropdown-menu {
-    display: none; /* Oculto por padrão */
+    display: none;
+    /* Oculto por padrão */
     position: absolute;
-    top: 35px; /* Alinha abaixo do nome */
-    right: 0; /* Alinha à direita do dropdown */
+    top: 35px;
+    /* Alinha abaixo do nome */
+    right: 0;
+    /* Alinha à direita do dropdown */
     background-color: white;
     border: 1px solid #ddd;
     min-width: 200px;
@@ -274,7 +293,7 @@ nav ul button:hover {
 /* Catalogo */
 
 section .title-wrapper-catalog {
-    color:var(--blue);
+    color: var(--blue);
 }
 
 section .catalog {
@@ -294,7 +313,7 @@ section .filter-card {
     justify-content: center;
 }
 
-.search-input{
+.search-input {
     width: 700px;
     height: 50px;
     border: none;
@@ -331,7 +350,7 @@ section .card-wrapper {
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     grid-gap: 30px;
     padding-top: 50px;
-    
+
 }
 
 /* Card Adventure*/
@@ -400,8 +419,12 @@ section .card-item {
     cursor: pointer;
     transition: color 0.3s ease;
 }
-  
-  .favorite-icon:hover {
+
+.favorite-icon:hover {
+    color: red;
+}
+
+.favorite-icon.favorited {
     color: red;
 }
 
@@ -462,6 +485,24 @@ section .card-adm {
     color: var(--blue);
 }
 
+.favorite-icon-adm {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 36px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.favorite-icon-adm:hover {
+    color: red;
+}
+
+.favorite-icon-adm.favorited {
+    color: red;
+}
+
 /* Card Security*/
 
 section .card-sec {
@@ -520,6 +561,24 @@ section .card-sec {
     color: var(--blue);
 }
 
+.favorite-icon-sec {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 36px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.favorite-icon-sec:hover {
+    color: red;
+}
+
+.favorite-icon-sec.favorited {
+    color: red;
+}
+
 /*Notícias*/
 
 section .texto {
@@ -576,15 +635,20 @@ section .texto {
 }
 
 @keyframes fade {
-    from {opacity: 0.4}
-    to {opacity: 1}
- }
+    from {
+        opacity: 0.4
+    }
+
+    to {
+        opacity: 1
+    }
+}
 
 /*Sobre*/
 
 .features {
     width: 100%;
-    height:  100%;
+    height: 100%;
     background: white;
     display: flex;
     align-items: center;
@@ -654,10 +718,13 @@ footer .main {
     margin-top: 20px;
 }
 
-.footer-company, .footer-rental, .footer-contact, .footer-social {
+.footer-company,
+.footer-rental,
+.footer-contact,
+.footer-social {
     color: white;
     height: 100%;
-    min-height: 100px;   
+    min-height: 100px;
 }
 
 .footer-links h4 {
@@ -720,10 +787,12 @@ footer .last {
         width: 50%;
         padding: 0px 10px;
     }
+
     .card-adm img {
         width: 50%;
         padding: 0px 10px;
     }
+
     .card-sec img {
         width: 30%;
         padding: 0px 10px;
