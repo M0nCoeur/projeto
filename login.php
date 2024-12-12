@@ -1,6 +1,6 @@
 <?php
 session_start(); // Iniciar a sessão para armazenar dados do usuário
-include('conexao.php'); // Inclua a conexão com o banco de dados
+include('conexao.php'); // Inclua a conexão com o banco de dados usando PDO
 
 $status = "";
 if (isset($_GET['status']) && $_GET['status'] == 'cadastro_sucesso') {
@@ -18,13 +18,18 @@ if (isset($_POST['entrar'])) {
     $lembrar = isset($_POST['lembrar']);
 
     // Consulta para verificar o usuário
-    $query = "SELECT * FROM user WHERE email = '$email' AND senha = '$senha'";
-    $resultado = $conexao->query($query);
+    $query = "SELECT * FROM user WHERE email = :email AND senha = :senha";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senha);
+    $stmt->execute();
 
-    if ($resultado->num_rows > 0) {
-        // Usuário encontrado, inicia a sessão e armazena o nome
-        $usuario = $resultado->fetch_assoc();
+    $usuario = $stmt->fetch();
+
+    if ($usuario) {
+        // Usuário encontrado, inicia a sessão e armazena o nome e ID
         $_SESSION['usuario'] = $usuario['nome']; // Armazena o nome do usuário na sessão
+        $_SESSION['user_id'] = $usuario['id']; // Armazena o ID do usuário na sessão
 
         // Configuração do cookie se "Lembrar-me" estiver marcado
         if ($lembrar) {
@@ -49,14 +54,19 @@ if (isset($_POST['cadastrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['pass'];
 
-    // Inserir o usuário no banco com a senha em texto simples
-    $query = "INSERT INTO user (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
-    if ($conexao->query($query) === TRUE) {
+    // Consulta para inserir o usuário no banco
+    $query = "INSERT INTO user (nome, email, senha) VALUES (:nome, :email, :senha)";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senha);
+
+    if ($stmt->execute()) {
         // Cadastro bem-sucedido, redirecionar para o login com mensagem
         header("Location: login.php?status=cadastro_sucesso");
         exit();
     } else {
-        $status = "<p style='color: red;'>Erro ao cadastrar: " . $conexao->error . "</p>";
+        $status = "<p style='color: red;'>Erro ao cadastrar usuário!</p>";
     }
 }
 ?>

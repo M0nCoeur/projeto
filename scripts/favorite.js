@@ -1,34 +1,40 @@
-function toggleFavorite(icon, gameId) {
-    // Verifica se o coração já está ativo (favoritado)
-    const isFavorited = icon.classList.contains('favorited');
-  
-    // Alterna a classe para mudar a aparência do coração
-    if (isFavorited) {
-      icon.classList.remove('favorited');
-    } else {
-      icon.classList.add('favorited');
+function toggleFavorite(id_jogo, element) {
+    // Verifica se o usuário está logado
+    var isLoggedIn = false;
+
+    // Verifica se o cookie de sessão de usuário está presente
+    if (document.cookie.indexOf('id_user') !== -1) {
+        isLoggedIn = true;
     }
-  
-    // Envia a atualização para o servidor via Fetch API
-    fetch('/favoritar.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        gameId: gameId, // ID do jogo que foi clicado
-        action: isFavorited ? 'remove' : 'add', // Define a ação: adicionar ou remover
-      }),
-    })
-      .then((response) => response.json()) // Converte a resposta em JSON
-      .then((data) => {
-        if (!data.success) {
-          alert('Ocorreu um erro ao atualizar o favorito.');
-        }
-      })
-      .catch((error) => {
-        console.error('Erro:', error);
-        alert('Não foi possível conectar ao servidor.');
-      });
-  }
-  
+
+    if (isLoggedIn) {
+        var action = element.classList.contains('favoritado') ? 'remove' : 'add';
+        
+        // Faz a requisição para o PHP para adicionar ou remover o favorito
+        var request = new XMLHttpRequest();
+        request.open('POST', 'favorites.php', true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        request.onload = function() {
+            if (request.status == 200) {
+                var response = JSON.parse(request.responseText);
+                if (response.status == 'success') {
+                    if (action === 'add') {
+                        element.classList.add('favoritado');
+                    } else {
+                        element.classList.remove('favoritado');
+                    }
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            } else {
+                alert('Erro ao processar a ação');
+            }
+        };
+        
+        request.send('id_jogo=' + id_jogo + '&action=' + action);
+    } else {
+        alert('Você precisa estar logado para favoritar jogos!');
+    }
+}

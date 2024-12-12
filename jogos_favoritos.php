@@ -1,6 +1,34 @@
 <?php
 session_start();
+include 'conexao.php';
+
+if (!isset($_SESSION['id_user'])) {
+    echo "Você precisa estar logado para acessar seus favoritos.";
+    exit();
+}
+
+$id_user = $_SESSION['id_user']; // Pega o ID do usuário logado
+
+// Consulta para pegar todos os jogos favoritados
+$query = "SELECT j.* FROM jogos j
+          JOIN favoritos f ON j.id = f.id_jogo
+          WHERE f.id_user = :id_user";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+$stmt->execute();
+
+$favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Exibe os jogos favoritados
+foreach ($favoritos as $jogo) {
+    echo "<div class='card'>";
+    echo "<img src='" . $jogo['imagem'] . "' alt='" . $jogo['nome'] . "' />";
+    echo "<h3>" . $jogo['nome'] . "</h3>";
+    echo "<p>" . $jogo['descricao'] . "</p>";
+    echo "</div>";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +37,11 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameVerse - Home</title>
-    <link rel="stylesheet" href="/HTML_PROJECT/styles/academic_adventure.css">
+    <link rel="stylesheet" href="/HTML_PROJECT/styles/favorites.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <script src="/HTML_PROJECT/scripts/script-header.js"></script>
 </head>
 <body>
-
 <header>
     <div class="content">
         <nav>
@@ -23,7 +50,7 @@ session_start();
             </p>
             <ul>
                   <li><a href="index.php#games">Jogos</a></li>
-                  <li><a href="index.php#galery">Baixar</a></li>
+                  <li><a href="index.php#galery">Notícias</a></li>
                   <li><a href="index.php#about">Sobre</a></li>
               
 
@@ -47,68 +74,14 @@ session_start();
             </ul>
         </nav>
     </header>
-    
 
-   
-
-<section class="sobre">
-<div id= "background">
- 
- <img src="assets/Academic Adventure.png" alt="">
-         </div> 
-<div class= "texto">
-<div class="titulo">Sobre</div>
-<p>Os jogadores mergulham em uma emocionante aventura ambientada em uma instituição de ensino voltada para a tecnologia da informação. Com o objetivo de conquistar o tão almejado diploma, os participantes exploram ambientes interativos, enfrentam desafios relacionados a programação, redes e segurança da informação, e resolvem quebra-cabeças tecnológicos.  Ao longo da jornada, os jogadores desenvolvem habilidades essenciais, desbloqueiam conhecimentos e se conectam com personagens intrigantes, enquanto aprendem sobre o mundo da TI. Prepare-se para uma experiência envolvente que une aprendizado e diversão em busca do sucesso acadêmico</p>
-</div>
-  </section>
-
-<section class="galery" id="galery">
-
-  <div id= "video">
- 
- <video loop autoplay muted>
-
- <source src="assets/VIDEO.mp4">
-         </video>
-
-         </div>
-      </section>
-</section>
-
-<section id= baixar class="download">
-<div class="conteudo_baixar">
- <h1>Baixe agora</h1>
- <br>
- <p>Nossos aplicativos funcionam em dispositivos Android e iOS. <br>Faça o download da versão correta para seu dispositivo <br>clicando no logotipo do sistema operacional apropriado abaixo.</p>
-
- <button class="botao">
-     <img src="assets/apple.png" alt="Descrição da imagem">
-     Baixar na App Store
- </button>
-
- <button class="botao_2">
-     <img src="assets/playstore.png" alt="Descrição da imagem">
-     Disponivel no Google Play
-
- </button>
-
- <p>Estude jogando e turbina seus conhecimentos!
- 👉 Comece agora: www.GameVerse.com</p>
- </div>
- <div class="imagem_2">
-  <img src="assets/MainChar2D.png" alt="">
- </div>
- </section>
-
->
-   
     <footer>
         <div class="main">
             <div class="content footer-links">
               <div class="footer-company">
                 <h4>Nosso Site</h4>
                 <h6>Sobre</h6>
-                
+                <h6>Contato</h6>
               </div>
                 <div class="footer-social">
                   <h4>Mantenha-se Conectado</h4>
@@ -130,7 +103,8 @@ session_start();
               GameVerse
             </div>
       </footer>
-    <script src="/HTML_PROJECT/scripts/drop.js"></script>
 
+    <script src="/HTML_PROJECT/scripts/drop.js"></script>
 </body>
 </html>
+                    
