@@ -17,59 +17,42 @@ if (isset($_POST['entrar'])) {
     $senha = $_POST['password'];
     $lembrar = isset($_POST['lembrar']);
 
-    // Consulta para verificar o usuário
-    $query = "SELECT * FROM user WHERE email = :email AND senha = :senha";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $senha);
-    $stmt->execute();
+    try {
+        // Consulta para verificar o usuário
+        $query = "SELECT * FROM user WHERE email = :email AND senha = :senha";
+        $stmt = $conn->prepare($query);  // Usando $conn para a conexão PDO
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->execute();
 
-    $usuario = $stmt->fetch();
+        $usuario = $stmt->fetch();
 
-    if ($usuario) {
-        // Usuário encontrado, inicia a sessão e armazena o nome e ID
-        $_SESSION['usuario'] = $usuario['nome']; // Armazena o nome do usuário na sessão
-        $_SESSION['user_id'] = $usuario['id']; // Armazena o ID do usuário na sessão
+        if ($usuario) {
+            // Usuário encontrado, inicia a sessão e armazena o nome e ID
+            $_SESSION['usuario'] = $usuario['nome']; // Armazena o nome do usuário na sessão
+            $_SESSION['user_id'] = $usuario['id_user']; // Armazena o ID do usuário na sessão
 
-        // Configuração do cookie se "Lembrar-me" estiver marcado
-        if ($lembrar) {
-            setcookie('email', $email, time() + (86400 * 30), "/"); // Cookie válido por 30 dias
-            setcookie('password', $senha, time() + (86400 * 30), "/");
+            // Configuração do cookie se "Lembrar-me" estiver marcado
+            if ($lembrar) {
+                setcookie('email', $email, time() + (86400 * 30), "/"); // Cookie válido por 30 dias
+                setcookie('password', $senha, time() + (86400 * 30), "/");
+            } else {
+                // Limpa os cookies se "Lembrar-me" não estiver marcado
+                setcookie('email', '', time() - 3600, "/");
+                setcookie('password', '', time() - 3600, "/");
+            }
+
+            header("Location: index.php"); // Redireciona para a página inicial após login
+            exit();
         } else {
-            // Limpa os cookies se "Lembrar-me" não estiver marcado
-            setcookie('email', '', time() - 3600, "/");
-            setcookie('password', '', time() - 3600, "/");
+            $status = "<p style='color: red;'>E-mail ou senha incorretos!</p>";
         }
-
-        header("Location: index.php");
-        exit();
-    } else {
-        $status = "<p style='color: red;'>E-mail ou senha incorretos!</p>";
-    }
-}
-
-// Processamento do cadastro
-if (isset($_POST['cadastrar'])) {
-    $nome = $_POST['name'];
-    $email = $_POST['email'];
-    $senha = $_POST['pass'];
-
-    // Consulta para inserir o usuário no banco
-    $query = "INSERT INTO user (nome, email, senha) VALUES (:nome, :email, :senha)";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $senha);
-
-    if ($stmt->execute()) {
-        // Cadastro bem-sucedido, redirecionar para o login com mensagem
-        header("Location: login.php?status=cadastro_sucesso");
-        exit();
-    } else {
-        $status = "<p style='color: red;'>Erro ao cadastrar usuário!</p>";
+    } catch (PDOException $e) {
+        $status = "<p style='color: red;'>Erro ao fazer login: " . $e->getMessage() . "</p>";
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>

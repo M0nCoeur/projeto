@@ -1,40 +1,32 @@
-function toggleFavorite(id_jogo, element) {
-    // Verifica se o usuário está logado
-    var isLoggedIn = false;
+function toggleFavorite(element, jogo_id) {
+    // Obtém o estado atual (favoritado ou não)
+    var isFavorited = element.getAttribute('data-favoritado') === 'true';
 
-    // Verifica se o cookie de sessão de usuário está presente
-    if (document.cookie.indexOf('id_user') !== -1) {
-        isLoggedIn = true;
-    }
+    // Preparando os dados para enviar via POST
+    var formData = new FormData();
+    formData.append('id_jogo', jogo_id);
 
-    if (isLoggedIn) {
-        var action = element.classList.contains('favoritado') ? 'remove' : 'add';
-        
-        // Faz a requisição para o PHP para adicionar ou remover o favorito
-        var request = new XMLHttpRequest();
-        request.open('POST', 'favorites.php', true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        
-        request.onload = function() {
-            if (request.status == 200) {
-                var response = JSON.parse(request.responseText);
-                if (response.status == 'success') {
-                    if (action === 'add') {
-                        element.classList.add('favoritado');
-                    } else {
-                        element.classList.remove('favoritado');
-                    }
-                    alert(response.message);
-                } else {
-                    alert(response.message);
-                }
+    // Envia a requisição para o PHP
+    fetch('/HTML_PROJECT/favorites.php', {
+        method: 'POST',
+        body: formData // Usando FormData para enviar os dados
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data === 'success') {
+            // Se a operação for bem-sucedida, atualiza o ícone
+            if (isFavorited) {
+                element.style.color = ''; // Cor padrão (desfavoritado)
+                element.setAttribute('data-favoritado', 'false');
             } else {
-                alert('Erro ao processar a ação');
+                element.style.color = 'red'; // Cor vermelha (favoritado)
+                element.setAttribute('data-favoritado', 'true');
             }
-        };
-        
-        request.send('id_jogo=' + id_jogo + '&action=' + action);
-    } else {
-        alert('Você precisa estar logado para favoritar jogos!');
-    }
+        } else if (data === 'not_logged_in') {
+            alert('Você precisa estar logado para favoritar jogos.');
+        } else {
+            alert('Erro ao favoritar/desfavoritar!');
+        }
+    })
+    .catch(error => console.error('Erro ao favoritar:', error));
 }

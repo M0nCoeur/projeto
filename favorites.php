@@ -1,42 +1,50 @@
 <?php
-session_start();
-include 'conexao.php'; // Conexão com o banco de dados
+session_start(); // Iniciar a sessão para acessar as variáveis de sessão
+include('conexao.php'); // Conexão com o banco de dados
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id_user'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Usuário não logado']);
-    exit();
-}
+// Verificar se o usuário está logado
+if (isset($_SESSION['user_id'])) {
+    // Pega o ID do usuário
+    $id_user = $_SESSION['user_id'];
 
-$id_user = $_SESSION['id_user']; // Pega o ID do usuário logado
+    // Verifica se o ID do jogo foi passado
+    if (isset($_POST['id_jogo'])) {
+        $id_jogo = $_POST['id_jogo'];
 
-// Verifica a ação solicitada (favoritar ou desfavoritar)
-if (isset($_POST['id_jogo']) && isset($_POST['action'])) {
-    $id_jogo = $_POST['id_jogo'];
-    $action = $_POST['action'];
-
-    if ($action == 'add') {
-        // Adicionar favorito
-        $query = "INSERT INTO favoritos (id_user, id_jogo) VALUES (:id_user, :id_jogo)";
-        $stmt = $pdo->prepare($query);
+        // Verifica se o jogo já está nos favoritos
+        $query = "SELECT * FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
+        $stmt = $conn->prepare($query);
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $stmt->bindParam(':id_jogo', $id_jogo, PDO::PARAM_INT);
-        if ($stmt->execute()) {
-            echo json_encode(['status' => 'success', 'message' => 'Jogo favoritado com sucesso']);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // Se já está favoritado, remove da tabela favoritos
+            $query = "DELETE FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $stmt->bindParam(':id_jogo', $id_jogo, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                echo 'success'; // Jogo desfavoritado com sucesso
+            } else {
+                echo 'error'; // Erro ao desfavoritar
+            }
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Erro ao favoritar jogo']);
+            // Se não está favoritado, insere na tabela favoritos
+            $query = "INSERT INTO favoritos (id_user, id_jogo) VALUES (:id_user, :id_jogo)";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $stmt->bindParam(':id_jogo', $id_jogo, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                echo 'success'; // Jogo favoritado com sucesso
+            } else {
+                echo 'error'; // Erro ao favoritar
+            }
         }
-    } elseif ($action == 'remove') {
-        // Remover favorito
-        $query = "DELETE FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-        $stmt->bindParam(':id_jogo', $id_jogo, PDO::PARAM_INT);
-        if ($stmt->execute()) {
-            echo json_encode(['status' => 'success', 'message' => 'Jogo desfavoritado com sucesso']);
-        } else {
-            echo json_encode(['status' => 'error', 'message' => 'Erro ao desfavoritar jogo']);
-        }
+    } else {
+        echo 'invalid request'; // Caso não tenha o ID do jogo
     }
+} else {
+    echo 'not_logged_in'; // Se o usuário não estiver logado
 }
 ?>

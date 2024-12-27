@@ -1,28 +1,6 @@
 <?php
-session_start();
+session_start(); // Iniciar a sessão para acessar as variáveis de sessão
 ?>
-
-<!--<div class="card-adm">
-          <div class="favorite-icon-adm" onclick="toggleFavorite(this, 1)">&#9829;</div>
-          <img src="/HTML_PROJECT/assets/adm.png" alt="adm" />
-          <div class="card-content-adm">
-            <h3>Academic Administração</h3>
-            <p>Academic Adventure é um jogo de aventura se passando no Senac para conquisar um certificado.
-            </p>
-            <button type="button">Em Breve...</button>
-          </div>
-        </div>
-        
-        <div class="card-sec">
-          <div class="favorite-icon-sec" onclick="toggleFavorite(this, 1)">&#9829;</div>
-          <img src="/HTML_PROJECT/assets/security.png" alt="sec" />
-          <div class="card-content-sec">
-            <h3>Academic Security</h3>
-            <p>Academic Adventure é um jogo de aventura se passando no Senac para conquisar um certificado.
-            </p>
-            <button type="button">Em Breve...</button>
-          </div>
-        </div>-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +26,6 @@ session_start();
           <li><a href="#games">Jogos</a></li>
           <li><a href="#galery">Notícias</a></li>
           <li><a href="#about">Sobre</a></li>
-
 
           <?php if (isset($_SESSION['usuario'])): ?>
             <!-- Dropdown para o usuário logado -->
@@ -83,38 +60,41 @@ session_start();
     </div>
   </header>
 
-
   <section class="catalog" id="games">
-    <div class="content">
-      <div class="title-wrapper-catalog">
-        <p>Encontre seu jogo favorito</p>
-        <h3>Jogos</h3>
-      </div>
+  <div class="content">
+    <div class="title-wrapper-catalog">
+      <p>Encontre seu jogo favorito</p>
+      <h3>Jogos</h3>
+    </div>
 
-      <!-- BUSCA  -->
-      <div class="filter-card">
-        <input
-          type="text"
-          class="search-input"
-          placeholder="Digite o nome do jogo.."
-          oninput="filtergames()" />
-        <button class="search-button" onclick="filtergames()">Buscar</button>
-      </div>
+    <!-- BUSCA -->
+    <div class="filter-card">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Digite o nome do jogo.."
+        oninput="filtergames()" />
+      <button class="search-button" onclick="filtergames()">Buscar</button>
+    </div>
 
-      <div class="card-wrapper">
-        <div class="card-item">
-          <div class="favorite-icon" onclick="toggleFavorite(this, 1)" data-id-jogo="1" data-favoritado="false">&#9829;</div>
-          <img src="/HTML_PROJECT/assets/Academic Adventure.png" alt="adventure" />
-          <div class="card-content">
-            <h3>Academic Adventure</h3>
-            <p>Academic Adventure é um jogo de aventura...</p>
-            <button type="button" onclick="window.location.href='academic_adventure.php'">Veja Mais</button>
-          </div>
+    <div class="card-wrapper">
+      <div class="card-item">
+        <!-- Botão de Favorito -->
+        <div class="favorite-icon" onclick="toggleFavorite(this, 1)" data-id-jogo="1" data-favoritado="false">
+          &#9829; <!-- Coração -->
         </div>
 
+        <img src="/HTML_PROJECT/assets/Academic Adventure.png" alt="adventure" />
+        <div class="card-content">
+          <h3>Academic Adventure</h3>
+          <p>Academic Adventure é um jogo de aventura...</p>
+          <button type="button" onclick="window.location.href='academic_adventure.php'">Veja Mais</button>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <section class="galery" id="galery">
     <div class="content">
@@ -131,6 +111,7 @@ session_start();
         <button class="button prev" onclick='move(-1)'>&#10094;</button>
         <button class="button next" onclick='move(1)'>&#10095;</button>
       </div>
+    </div>
   </section>
 
   <section class="features" id="about">
@@ -215,6 +196,7 @@ session_start();
       GameVerse
     </div>
   </footer>
+  
   <script src="/HTML_PROJECT/scripts/drop.js"></script>
   <script src="/HTML_PROJECT/scripts/filtergames.js"></script>
   <script src="/HTML_PROJECT/scripts/favorite.js"></script>
