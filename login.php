@@ -51,9 +51,40 @@ if (isset($_POST['entrar'])) {
         $status = "<p style='color: red;'>Erro ao fazer login: " . $e->getMessage() . "</p>";
     }
 }
+
+// Processamento do cadastro
+if (isset($_POST['cadastrar'])) {
+    $nome = $_POST['name'];
+    $email = $_POST['email'];
+    $senha = $_POST['pass'];
+
+    try {
+        // Verifica se o e-mail já está cadastrado
+        $query = "SELECT * FROM user WHERE email = :email";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $status = "<p style='color: red;'>E-mail já cadastrado!</p>";
+        } else {
+            // Inserir o usuário no banco com a senha em texto simples
+            $query = "INSERT INTO user (nome, email, senha) VALUES (:nome, :email, :senha)";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->execute();
+
+            // Cadastro bem-sucedido, redirecionar para o login com mensagem
+            header("Location: login.php?status=cadastro_sucesso");
+            exit();
+        }
+    } catch (PDOException $e) {
+        $status = "<p style='color: red;'>Erro ao cadastrar: " . $e->getMessage() . "</p>";
+    }
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

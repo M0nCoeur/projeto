@@ -1,6 +1,22 @@
 <?php
-session_start(); // Iniciar a sessão para acessar as variáveis de sessão
+session_start();
+include('conexao.php'); // Inclua a conexão com o banco de dados
+
+// Verifica se o usuário está logado
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+// Array para armazenar os IDs dos jogos favoritados
+$favorited_games = [];
+
+if ($user_id) {
+  $query = "SELECT id_jogo FROM favoritos WHERE id_user = :id_user";
+  $stmt = $conn->prepare($query);
+  $stmt->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+  $stmt->execute();
+  $favorited_games = $stmt->fetchAll(PDO::FETCH_COLUMN, 0); // Retorna uma array com os IDs dos jogos
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +52,7 @@ session_start(); // Iniciar a sessão para acessar as variáveis de sessão
               </div>
               <ul class="dropdown-menu">
                 <li><a href="myaccount.php">Minha Conta</a></li>
-                <li><a href="favorites.php">Jogos Favoritos</a></li>
+                <li><a href="jogos_favoritos.php">Jogos Favoritos</a></li>
                 <li><a href="reviews.php">Minhas Avaliações</a></li>
               </ul>
             </li>
@@ -61,39 +77,47 @@ session_start(); // Iniciar a sessão para acessar as variáveis de sessão
   </header>
 
   <section class="catalog" id="games">
-  <div class="content">
-    <div class="title-wrapper-catalog">
-      <p>Encontre seu jogo favorito</p>
-      <h3>Jogos</h3>
-    </div>
+    <div class="content">
+      <div class="title-wrapper-catalog">
+        <p>Encontre seu jogo favorito</p>
+        <h3>Jogos</h3>
+      </div>
 
-    <!-- BUSCA -->
-    <div class="filter-card">
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Digite o nome do jogo.."
-        oninput="filtergames()" />
-      <button class="search-button" onclick="filtergames()">Buscar</button>
-    </div>
+      <!-- BUSCA -->
+      <div class="filter-card">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Digite o nome do jogo.."
+          oninput="filtergames()" />
+        <button class="search-button" onclick="filtergames()">Buscar</button>
+      </div>
 
-    <div class="card-wrapper">
-      <div class="card-item">
-        <!-- Botão de Favorito -->
-        <div class="favorite-icon" onclick="toggleFavorite(this, 1)" data-id-jogo="1" data-favoritado="false">
-          &#9829; <!-- Coração -->
+      <div class="card-wrapper">
+        <div class="card-item">
+          <?php
+          $jogo_id = 1; // ID do jogo (no futuro, este valor será dinâmico)
+          $is_favorited = in_array($jogo_id, $favorited_games);
+          ?>
+          <div
+            class="favorite-icon"
+            onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)"
+            data-id-jogo="<?php echo $jogo_id; ?>"
+            data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>"
+            style="color: <?php echo $is_favorited ? 'red' : ''; ?>;">
+            &#9829; <!-- Coração -->
+          </div>
+          <img src="/HTML_PROJECT/assets/Academic Adventure.png" alt="adventure" />
+          <div class="card-content">
+            <h3>Academic Adventure</h3>
+            <p>Academic Adventure é um jogo de aventura...</p>
+            <button type="button" onclick="window.location.href='academic_adventure.php'">Veja Mais</button>
+          </div>
         </div>
 
-        <img src="/HTML_PROJECT/assets/Academic Adventure.png" alt="adventure" />
-        <div class="card-content">
-          <h3>Academic Adventure</h3>
-          <p>Academic Adventure é um jogo de aventura...</p>
-          <button type="button" onclick="window.location.href='academic_adventure.php'">Veja Mais</button>
-        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <section class="galery" id="galery">
@@ -196,7 +220,7 @@ session_start(); // Iniciar a sessão para acessar as variáveis de sessão
       GameVerse
     </div>
   </footer>
-  
+
   <script src="/HTML_PROJECT/scripts/drop.js"></script>
   <script src="/HTML_PROJECT/scripts/filtergames.js"></script>
   <script src="/HTML_PROJECT/scripts/favorite.js"></script>
