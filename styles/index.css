@@ -421,7 +421,7 @@ section .card-item {
 }
 
 .favorite-icon:hover {
-    color: red;
+    color: crimson;
 }
 
 .favorite-icon.favorited {
