@@ -99,13 +99,7 @@ if ($user_id) {
           $jogo_id = 1; // ID do jogo (no futuro, este valor será dinâmico)
           $is_favorited = in_array($jogo_id, $favorited_games);
           ?>
-          <div
-            class="favorite-icon"
-            onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)"
-            data-id-jogo="<?php echo $jogo_id; ?>"
-            data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>"
-            style="color: <?php echo $is_favorited ? 'red' : ''; ?>;">
-            &#9829; <!-- Coração -->
+          <div class="favorite-icon" onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)" data-id-jogo="<?php echo $jogo_id; ?>" data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;"> &#9829; <!-- Coração -->
           </div>
           <img src="/HTML_PROJECT/assets/Academic Adventure.png" alt="adventure" />
           <div class="card-content">
@@ -223,7 +217,7 @@ if ($user_id) {
 
   <script src="/HTML_PROJECT/scripts/drop.js"></script>
   <script src="/HTML_PROJECT/scripts/filtergames.js"></script>
-  <script src="/HTML_PROJECT/scripts/favorite.js"></script>
+  <script src="/HTML_PROJECT/scripts/index.js"></script>
 
 </body>
 
