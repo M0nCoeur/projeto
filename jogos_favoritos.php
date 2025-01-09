@@ -25,7 +25,6 @@ $stmt->execute();
 $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -69,24 +68,40 @@ $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
-<main>
-    <h1>Meus Jogos Favoritos</h1>
+<?php if (empty($favoritos)): ?>
+    <div class="no-favorites">
+    <div class="no-favorites-message">
+        <h2>Você não tem jogos favoritos ainda!</h2>
+        <p>Adicione alguns aos seus favoritos.</p>
+    </div>
+    </div>
+<?php else: ?>
+    <section class="catalog" id="games">
+        <div class="content">
+            <div class="title-wrapper-catalog">
+                <p>Seus Jogos Favoritos</p>
+                <h3>Jogos</h3>
+            </div>
 
-    <?php if (empty($favoritos)): ?>
-        <p>Você ainda não possui jogos favoritos.</p>
-    <?php else: ?>
-        <div class="favorites-container">
-            <?php foreach ($favoritos as $jogo): ?>
-                <div class="favorite-card">
-                    <!-- Exibe a imagem do jogo -->
-                    <img src="assets/<?= $jogo['imagem'] ?>" alt="<?= $jogo['nome'] ?>" class="favorite-image">
-                    <h3><?= $jogo['nome'] ?></h3>
-                    <p><?= $jogo['descricao'] ?></p>
-                </div>
-            <?php endforeach; ?>
+            <div class="card-wrapper">
+                <?php foreach ($favoritos as $jogo): ?>
+                    <div class="card-item_fav">
+                        <!-- Ícone de favoritar dentro do card -->
+                        <div class="favorite-icon" onclick="toggleFavorite(this)" data-id-jogo="<?= $jogo['id'] ?>" data-favoritado="true" style="color: red;">
+                            &#9829; <!-- Coração para indicar que está favoritado -->
+                        </div>
+                        <img src="<?= $jogo['imagem'] ?>" alt="<?= $jogo['nome'] ?>" />
+                        <div class="card-content">
+                            <h3><?= $jogo['nome'] ?></h3>
+                            <p><?= $jogo['descricao'] ?></p>
+                            <button type="button" onclick="window.location.href='jogo.php?id=<?= $jogo['id'] ?>'">Veja Mais</button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
-    <?php endif; ?>
-</main>
+    </section>
+<?php endif; ?>
 
 <footer>
     <div class="main">
@@ -118,5 +133,6 @@ $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </footer>
 
 <script src="/HTML_PROJECT/scripts/drop.js"></script>
+<script src="/HTML_PROJECT/scripts/favorite.js"></script>
 </body>
 </html>
