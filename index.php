@@ -218,6 +218,7 @@ if ($user_id) {
   <script src="/HTML_PROJECT/scripts/drop.js"></script>
   <script src="/HTML_PROJECT/scripts/filtergames.js"></script>
   <script src="/HTML_PROJECT/scripts/index.js"></script>
+  <script src="/HTML_PROJECT/scripts/favorite-message.js"></script>
 
 </body>
 

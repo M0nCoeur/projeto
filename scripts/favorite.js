@@ -15,11 +15,12 @@ function toggleFavorite(element) {
         if (data === 'success') {
             // Atualiza o estado do ícone com base no estado atual
             if (isFavorited) {
-                element.style.color = ''; // Cor padrão (desfavoritado)
+                element.style.color = ''; // Cor padrão "desfavoritado"
                 element.setAttribute('data-favoritado', 'false');
-                // O card permanece na tela
+                // Exibe a mensagem de desfavoritar
+                showSuccessMessage('Jogo desfavoritado com sucesso!', 'red');
             } else {
-                element.style.color = 'red'; // Cor vermelha (favoritado)
+                element.style.color = 'red'; // Cor vermelha "favoritado"
                 element.setAttribute('data-favoritado', 'true');
             }
 
@@ -35,4 +36,28 @@ function toggleFavorite(element) {
         }
     })
     .catch(error => console.error('Erro ao favoritar:', error));
+}
+
+// Função para exibir a mensagem de sucesso
+function showSuccessMessage(message, color) {
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('success-message');
+    messageContainer.textContent = message;
+    messageContainer.style.backgroundColor = color; // Define o fundo da mensagem (vermelho)
+    messageContainer.style.color = 'white'; // Cor do texto (branca) para contraste
+    messageContainer.style.padding = '10px';
+    messageContainer.style.position = 'fixed';
+    messageContainer.style.top = '20px';
+    messageContainer.style.left = '50%';
+    messageContainer.style.transform = 'translateX(-50%)';
+    messageContainer.style.borderRadius = '5px';
+    document.body.appendChild(messageContainer);
+
+    // Adiciona um efeito de fade-out para desaparecer após 3 segundos
+    setTimeout(() => {
+        messageContainer.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(messageContainer);
+        }, 500); // 500ms para completar o fade-out
+    }, 3000); // Exibe a mensagem por 3 segundos
 }
