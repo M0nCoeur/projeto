@@ -36,7 +36,7 @@ session_start();
                         </div>
                         <ul class="dropdown-menu">
                             <li><a href="myaccount.php">Minha Conta</a></li>
-                            <li><a href="favorites.php">Jogos Favoritos</a></li>
+                            <li><a href="jogos_favoritos.php">Jogos Favoritos</a></li>
                             <li><a href="reviews.php">Minhas Avaliações</a></li>
                         </ul>
                     </li>

@@ -413,8 +413,6 @@ section .card-item_fav {
     color: crimson;
 }
 
-.no-favorites {}
-
 .no-favorites-message {
     text-align: center;
     font-size: 24px;

@@ -94,7 +94,7 @@ $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="card-content">
                             <h3><?= $jogo['nome'] ?></h3>
                             <p><?= $jogo['descricao'] ?></p>
-                            <button type="button" onclick="window.location.href='jogo.php?id=<?= $jogo['id'] ?>'">Veja Mais</button>
+                            <button type="button" onclick="window.location.href='academic_adventure.php?id=<?= $jogo['id'] ?>'">Veja Mais</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
