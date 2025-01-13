@@ -1,4 +1,4 @@
-/* font import*/
+/* Importação - Fonte */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
     margin: 0px;
@@ -28,7 +28,7 @@ body {
 
 header {
     width: 100%;
-    height: 500px;
+    height: 180px;
     background: white;
     box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
@@ -121,7 +121,8 @@ nav ul button:hover {
     color: white;
 }
 
-/* Login/Logout Button Styles */
+/* Login/Logout estilização */
+
 .login-button, .logout-button {
     background-color: #4CAF50; /* Cor padrão para o botão de login */
     color: white;
@@ -136,7 +137,8 @@ nav ul button:hover {
     background-color: #f44336; /* Cor para logout */
 }
 
-/* Hover effects */
+/* Efeitos Hover */
+
 .login-button:hover, .logout-button:hover {
     opacity: 0.8;
 }
@@ -271,350 +273,193 @@ nav ul button:hover {
     display: block;
 }
 
-/* Catalogo */
+/* Minha Conta */
 
-section .title-wrapper-catalog {
-    color:var(--blue);
+/* Seção da conta */
+.account-section {
+    width: 50%;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-section .catalog {
+/* Ajustando a distância entre os labels e os inputs */
+.account-section label {
+    display: block;
+    margin-bottom: 5px; /* Diminui a distância entre o label e o input */
+    font-size: 16px;
+    color: #333;
+}
+
+.account-section input {
     width: 100%;
-    padding: 100px;
-}
-
-section .filter-card {
-    width: 980px;
-    height: 100px;
-    background-color: var(--gray);
-    border-radius: 8px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-input{
-    width: 700px;
-    height: 50px;
-    border: none;
-    border: 4px 0px 0px 4px;
-    text-indent: 10px;
-}
-
-.search-button {
-    width: 150px;
-    height: 50px;
-    border-radius: 0px 4px 4px 0px;
-    border: none;
-    background: var(--blue);
-    color: white;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: 0.3s ease;
-}
-
-.search-button:hover {
-    background: #d3d2d2;
-    color: var(--blue);
-}
-
-.title-wrapper-catalog {
-    margin-top: 200px;
-    padding-bottom: 20px;
-}
-
-section .card-wrapper {
-    max-width: 1000px;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    grid-gap: 30px;
-    padding-top: 50px;
-    
-}
-
-/* Card Adventure*/
-
-section .card-item {
-    height: 400px;
-    background-color: var(--gray);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 2px 14px #0c0c0c;
-    
-}
-
-.card-content {
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.card-item img {
-    width: 85%;
-    margin-top: 20px;
-}
-
-.card-item h4 {
-    width: 90%;
-}
-
-.card-item p {
-    width: 90%;
-    font-style: italic;
-    color: #00000070;
-    margin-bottom: 5px;
-}
-
-.card-item button {
-    width: 90%;
-    padding: 15px;
-    border: none;
-    background: var(--blue);
+    padding: 8px;
+    margin-bottom: 15px; /* Distância entre os campos de input */
+    border: 1px solid #ddd;
     border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: 0.3s ease;
-    margin-bottom: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-.card-item button:hover {
-    background: #ededed;
-    color: var(--blue);
+.account-section input:focus {
+    border-color: #4e73df;
+    outline: none;
 }
 
-/* Card Administração*/
-
-section .card-adm {
-    height: 400px;
-    background-color: var(--gray);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 2px 14px #0c0c0c;
-}
-
-.card-content-adm {
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.account-section h2 {
+    font-size: 30px;
+    color: #333;
+    text-align: center;
     margin-bottom: 15px;
 }
 
-.card-adm img {
-    width: 70%;
+/* Estilos do formulário */
+.account-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  /* Espaço menor entre os campos */
+}
+
+.account-section form label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.account-section form label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px; /* Reduzido de 10px para 5px */
+    margin-right: 10px; /* Reduzido para aproximar um pouco mais da input */
+    font-size: 14px;
+}
+
+.account-section form input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px; /* Reduzido de 15px para 10px */
+}
+
+.account-section form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
     margin-top: 10px;
 }
 
-.card-adm h4 {
-    width: 90%;
+.account-section form button:hover {
+    background-color: #0056b3;
 }
 
-.card-adm p {
-    width: 90%;
-    font-style: italic;
-    color: #00000070;
-    margin-bottom: 5px;
+
+.account-section form input[type="text"]:focus,
+.account-section form input[type="email"]:focus,
+.account-section form input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
 }
 
-.card-adm button {
-    width: 90%;
-    padding: 15px;
+/* Estilo do botão */
+.account-section form button {
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    background: var(--blue);
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
+    border-radius: 6px;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s ease;
-    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.card-adm button:hover {
-    background: #ededed;
-    color: var(--blue);
+.account-section form button:hover {
+    background-color: #0056b3;
 }
 
-/* Card Security*/
-
-section .card-sec {
-    height: 400px;
-    background-color: var(--gray);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 2px 14px #0c0c0c;
+/* Mensagem de feedback */
+#message {
+    margin-top: 15px;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    display: none;
 }
 
-.card-content-sec {
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 5px;
+#message.success {
+    background-color: #d4edda;
+    color: #155724;
 }
 
-.card-sec img {
-    width: 48%;
-    margin-top: 40px;
+#message.error {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-.card-sec h4 {
-    width: 90%;
-    margin-bottom: 5px;
-}
-
-.card-sec p {
-    width: 90%;
-    font-style: italic;
-    color: #00000070;
-    margin-bottom: 5px;
-}
-
-.card-sec button {
-    width: 90%;
-    padding: 15px;
-    border: none;
-    background: var(--blue);
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: 0.3s ease;
-    margin-bottom: 10px;
-}
-
-.card-sec button:hover {
-    background: #ededed;
-    color: var(--blue);
-}
-
-/*Notícias*/
-
-section .texto {
-    color: var(--blue);
-    margin-bottom: 20px;
-}
-
-.galery {
-    width: 100%;
-    height: 100%;
+/* Container Switch */
+.toggle-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 50px 10px;
+    margin-bottom: 15px;
 }
 
-.carousel {
+/* Label ao lado do switch */
+#edit-label {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Switch */
+.switch {
     position: relative;
-    overflow: hidden;
-    border-radius: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
 }
 
-.imagens {
-    display: flex;
-    transition: transform 0.5s ease;
+.switch input {
+    display: none; /* Oculta o input */
 }
 
-.carousel img {
-    width: 1000px;
-    height: 470px;
-}
-
-.button {
+.slider {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
     cursor: pointer;
-    font-size: 24px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
 }
 
-.prev {
-    left: 10px;
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
 }
 
-.next {
-    right: 10px;
+input:checked + .slider {
+    background-color: #007BFF;
 }
 
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {opacity: 0.4}
-    to {opacity: 1}
- }
-
-/*Sobre*/
-
-.features {
-    width: 100%;
-    height:  100%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 0px;
-}
-
-.title-wrapper-features {
-    padding: 20px 0px;
-}
-
-.feature-card-block {
-    max-width: 1000px;
-    min-width: 300px;
-    height: 600px;
-    background: var(--gray);
-    margin: 0 auto;
-    border-radius: 8px;
-    z-index: 10;
-    padding: 50px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    grid-gap: 30px;
-}
-
-.feature-card-item {
-    max-width: 420px;
-    height: 150px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    border: 1px solid #dedede3b;
-    border-radius: 4px;
-}
-
-.feature-text-content {
-    max-width: 60%;
-    margin: 5px;
-}
-
-.feature-card-item img {
-    width: 64px;
-    height: 64px;
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
 
 /*Rodapé*/
