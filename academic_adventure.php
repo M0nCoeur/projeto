@@ -64,73 +64,73 @@ if ($user_id) {
   </header>
 
   <main>
-  <!-- Section Inicial -->
-  <section class="hero">
-    <!-- Vídeo de fundo -->
-    <video autoplay muted loop id="hero-video">
-      <source src="/HTML_PROJECT/assets/video-bg.mp4" type="video/mp4">
-      Seu navegador não suporta o vídeo.
-    </video>
+    <!-- Section Inicial -->
+    <section class="hero">
+      <!-- Vídeo de fundo -->
+      <video autoplay muted loop id="hero-video">
+        <source src="https://github.com/M0nCoeur/projeto/raw/main/assets/video-bg.mp4" type="video/mp4">
+        Seu navegador não suporta o vídeo.
+      </video>
 
-    <div class="hero-content">
-      <img src="/HTML_PROJECT/assets/logo-game.jpg" alt="Banner do Jogo" class="hero-image">
-      <div class="hero-text">
-        <h1>Academic Adventure</h1>
-        <p>Embarque em uma emocionante jornada pelo mundo da TI. Resolva desafios, conquiste conhecimentos e alcance seu diploma!</p>
-        <button onclick="window.location.href='#download'" class="download-btn">Baixar Agora</button>
-      </div>
-      
-      <!-- Botão Favoritar ao lado da imagem -->
-      <?php if ($user_id): ?>
-        <div class="favorite-container" id="favorite-container">
-          <div class="favorite-icon" onclick="toggleFavorite()" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;">
-            &#9829; <!-- Coração -->
-          </div>
-          <span id="favorite-text"><?php echo $is_favorited ? 'Favoritado' : 'Favoritar'; ?></span>
+      <div class="hero-content">
+        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/logo-game.jpg" alt="Banner do Jogo" class="hero-image">
+        <div class="hero-text">
+          <h1>Academic Adventure</h1>
+          <p>Embarque em uma emocionante jornada pelo mundo da TI. Resolva desafios, conquiste conhecimentos e alcance seu diploma!</p>
+          <button onclick="window.location.href='#download'" class="download-btn">Baixar Agora</button>
         </div>
-      <?php endif; ?>
-    </div>
-  </section>
 
-  <!-- Outras Seções -->
-  <!-- Section Sobre -->
-  <section id="about" class="about">
-    <h2>Sobre o Jogo</h2>
-    <div class="about-content">
-      <img src="/HTML_PROJECT/assets/logo-game.jpg" alt="Sobre o jogo" class="about-image">
-      <p>Os jogadores mergulham em uma aventura ambientada em uma instituição de ensino voltada para a tecnologia da informação. Explore ambientes interativos, enfrente desafios e desenvolva habilidades essenciais enquanto desbloqueia conhecimentos e interage com personagens intrigantes.</p>
-    </div>
-  </section>
+        <!-- Botão Favoritar ao lado da imagem -->
+        <?php if ($user_id): ?>
+          <div class="favorite-container" id="favorite-container">
+            <div class="favorite-icon" onclick="toggleFavorite()" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;">
+              &#9829; <!-- Coração -->
+            </div>
+            <span id="favorite-text"><?php echo $is_favorited ? 'Favoritado' : 'Favoritar'; ?></span>
+          </div>
+        <?php endif; ?>
+      </div>
+    </section>
 
-  <!-- Sections do Carrousel -->
-  <section id="gallery" class="gallery">
-    <h2>Galeria</h2>
-    <div class="carousel">
-      <img src="/HTML_PROJECT/assets/imagem_1.jpg" alt="Imagem 1" onclick="openModal(this)">
-      <img src="/HTML_PROJECT/assets/imagem_1.jpg" alt="Imagem 2" onclick="openModal(this)">
-      <img src="/HTML_PROJECT/assets/imagem_1.jpg" alt="Imagem 3" onclick="openModal(this)">
-    </div>
-  </section>
+    <!-- Outras Seções -->
+    <!-- Section Sobre -->
+    <section id="about" class="about">
+      <h2>Sobre o Jogo</h2>
+      <div class="about-content">
+        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/logo-game.jpg" alt="Sobre o jogo" class="about-image">
+        <p>Os jogadores mergulham em uma aventura ambientada em uma instituição de ensino voltada para a tecnologia da informação. Explore ambientes interativos, enfrente desafios e desenvolva habilidades essenciais enquanto desbloqueia conhecimentos e interage com personagens intrigantes.</p>
+      </div>
+    </section>
 
-  <!-- Modal com as imagens-->
-  <div id="imageModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImage">
-    <div id="caption"></div>
-  </div>
+    <!-- Sections do Carrousel -->
+    <section id="gallery" class="gallery">
+      <h2>Galeria</h2>
+      <div class="carousel">
+        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/imagem_1.jpg" alt="Imagem 1" onclick="openModal(this)">
+        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/imagem_1.jpg" alt="Imagem 2" onclick="openModal(this)">
+        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/imagem_1.jpg" alt="Imagem 3" onclick="openModal(this)">
+      </div>
+    </section>
 
-  <!-- Section de Download -->
-  <section id="download" class="download">
-    <h2>Baixe Agora</h2>
-    <p>Disponível para sistema Windows 10 e 11. Clique no logotipo do sistema operacional para fazer o download.</p>
-    <div class="download-buttons">
-      <button class="btn google">
-        <img src="/HTML_PROJECT/assets/store2.png" alt="Windows">
-        Windows
-      </button>
+    <!-- Modal com as imagens-->
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <div id="caption"></div>
     </div>
-  </section>
-</main>
+
+    <!-- Section de Download -->
+    <section id="download" class="download">
+      <h2>Baixe Agora</h2>
+      <p>Disponível para sistema Windows 10 e 11. Clique no logotipo do sistema operacional para fazer o download.</p>
+      <div class="download-buttons">
+        <a href="https://github.com/M0nCoeur/projeto/raw/refs/heads/main/assets/video-bg.mp4" class="btn google">
+          <img src="/HTML_PROJECT/assets/store2.png" alt="Windows">
+          Windows
+        </a>
+      </div>
+    </section>
+  </main>
 
 
 
