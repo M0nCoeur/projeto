@@ -1,5 +1,6 @@
 /* font import*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
@@ -16,21 +17,19 @@
 
 /*Config-Geral*/
 
-html, 
+html,
 body {
     width: 100%;
     overflow-x: hidden;
-    background: transparent;
+    background-color: #00285f;
     scroll-behavior: smooth;
-    
-    
 }
 
 /*Cabeçalho*/
 
 header {
     width: 100%;
-    height: 100px;
+    height: 150px;
     background: white;
     box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
@@ -57,7 +56,7 @@ nav {
     justify-content: space-between;
 }
 
-.brand  {
+.brand {
     font-size: 24px;
     color: var(--blue);
     cursor: pointer;
@@ -68,16 +67,20 @@ nav {
 }
 
 .brand a:visited {
-    color: inherit; /* Garante que a cor não mude após clicar */
+    color: inherit;
+    /* Garante que a cor não mude após clicar */
 }
 
 
 nav ul {
     display: flex;
     flex-direction: row;
-    align-items: center;  /* Alinha todos os itens verticalmente ao centro */
-    justify-content: flex-start;  /* Alinha à esquerda */
-    margin-right: 20px;  /* Garantir um pequeno espaço da direita */
+    align-items: center;
+    /* Alinha todos os itens verticalmente ao centro */
+    justify-content: flex-start;
+    /* Alinha à esquerda */
+    margin-right: 20px;
+    /* Garantir um pequeno espaço da direita */
 }
 
 nav ul li {
@@ -85,15 +88,17 @@ nav ul li {
     padding: 10px;
     cursor: pointer;
     display: flex;
-    align-items: center;  /* Alinha o texto e o ícone no centro */
+    align-items: center;
+    /* Alinha o texto e o ícone no centro */
 }
 
 nav ul li span {
-    color: var(--orange);  /* Cor do texto */
-    font-weight: bold;  
-    font-size: 1.2em;  
-    padding: 5px 10px;  
-    border-radius: 5px;  
+    color: var(--orange);
+    /* Cor do texto */
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 nav ul li a {
@@ -111,7 +116,7 @@ nav ul button {
     padding: 8px 40px;
     cursor: pointer;
     margin-left: 30px;
-    color:  var(--blue);
+    color: var(--blue);
     font-weight: bold;
     border-radius: 4px;
 
@@ -124,8 +129,10 @@ nav ul button:hover {
 }
 
 /* Login/Logout Button Styles */
-.login-button, .logout-button {
-    background-color: #4CAF50; /* Cor padrão para o botão de login */
+.login-button,
+.logout-button {
+    background-color: #4CAF50;
+    /* Cor padrão para o botão de login */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -135,12 +142,13 @@ nav ul button:hover {
 }
 
 .logout-button {
-    background-color: #f44336; /* Cor para logout */
+    background-color: #f44336;
+    /* Cor para logout */
 }
 
-
 /* Hover effects */
-.login-button:hover, .logout-button:hover {
+.login-button:hover,
+.logout-button:hover {
     opacity: 0.8;
 }
 
@@ -166,8 +174,8 @@ nav ul button:hover {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-
 }
+
 .imagens-header {
     display: flex;
     transition: transform 0.5s ease;
@@ -203,9 +211,14 @@ nav ul button:hover {
 }
 
 @keyframes fade-header {
-    from {opacity: 0.4}
-    to {opacity: 1}
- }
+    from {
+        opacity: 0.4
+    }
+
+    to {
+        opacity: 1
+    }
+}
 
 /* Dropdown container */
 .dropdown {
@@ -219,11 +232,11 @@ nav ul button:hover {
     align-items: center;
     cursor: pointer;
     padding: 5px 10px;
-    
+
 }
 
 .user-container:hover {
-        transition: 0.3s ease;
+    transition: 0.3s ease;
     background-color: rgba(0, 123, 255, 0.1);
     border-radius: 5px;
 }
@@ -237,10 +250,13 @@ nav ul button:hover {
 
 /* Dropdown menu */
 .dropdown-menu {
-    display: none; /* Oculto por padrão */
+    display: none;
+    /* Oculto por padrão */
     position: absolute;
-    top: 35px; /* Alinha abaixo do nome */
-    right: 0; /* Alinha à direita do dropdown */
+    top: 35px;
+    /* Alinha abaixo do nome */
+    right: 0;
+    /* Alinha à direita do dropdown */
     background-color: white;
     border: 1px solid #ddd;
     min-width: 200px;
@@ -274,152 +290,263 @@ nav ul button:hover {
     display: block;
 }
 
-/*video*/
+/* Início */
 
-
-/* SOBRE */
-
-.sobre{
-    width: 100%;
-    height: 500px;
-    background: radial-gradient(#ffce8e, #f78b00);
-    align-items: center;
-    text-align: start;
+.hero {
+    position: relative; /* Necessário para sobrepor o conteúdo sobre o vídeo */
     display: flex;
-}
-
-
-.download{
-    background: #00285f;
-    width: 100%;
-    height: 500px;
+    justify-content: center;
     align-items: center;
+    color: #fff;
+    padding: 50px 0;
     text-align: center;
-    color: white;
-    display: flex; /* Usando flexbox */
-    flex-direction: row; /* Organiza os itens em uma coluna */
-    align-items: center; /* Centraliza os itens horizontalmente */
-    justify-content: center; /* Centraliza os itens verticalmente */
-   
+    overflow: hidden; /* Garante que nada saia da área visível */
 }
- 
-.download h1 {
-    font-size: 36px; /* Aumenta o tamanho da fonte do título */
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-.download .imagem_2{
-    width: 20px;
 
+.hero #hero-video {
+    position: absolute; /* Coloca o vídeo atrás do conteúdo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo cobrir toda a área da .hero */
+    z-index: 1; /* Coloca o vídeo atrás do conteúdo */
+    opacity: 0.1; /* Ajuste de transparência */
 }
- 
-/* Estilo para os botões */
-.botao {
-    display: inline-flex;
+
+.hero .hero-content {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px 20px;
-    margin: 5px;
-    border: none;
-    background-color: #000000;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+    gap: 20px;
+    z-index: 1; /* Garante que o conteúdo fique acima do vídeo */
+}
+
+.hero .hero-image {
+    max-width: 100%;
+    width: 500px;
     border-radius: 8px;
-}
- 
-.botao img {
-    width: 20px; /* Ajuste o tamanho da imagem conforme necessário */
-    margin-right: 10px; /* Espaço entre a imagem e o texto */
+    height: auto;
 }
 
-.botao_2 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 40px;
-    margin: 5px;
-    border: none;
-    background-color: #000000;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-}
- 
-.botao_2 img {
-    width: 20px; /* Ajuste o tamanho da imagem conforme necessário */
-    margin-right: 10px; /* Espaço entre a imagem e o texto */
-}
-
-
-/*Notícias*/
-
-section .texto {
-    color:var(--blue);
+.hero h1 {
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-.sobre .titulo{
-    font-size: 30px;
-    text-align: center;
-    padding: 20px;
-    font-weight: bold;
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
-.galery {
-    width: 100%;
-    height: 100%;
+.hero .download-btn {
+    background-color: #f39c12;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero .download-btn:hover {
+    background-color: #bd671c;
+}
+
+/* Conteiner de Favoritos */
+
+.favorite-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 50px 10px;
-    background: radial-gradient(#ffce8e, #f78b00);
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #004cb6;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.favorite-container:hover {
+    background-color: #00409b;
+}
+
+.favorite-icon {
+    font-size: 30px;
+    color: #ccc;
+    margin-right: 10px;
+}
+
+#favorite-text {
+    font-size: 16px;
+}
+
+/* About Section */
+.about {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    max-width: 40%;
+    border-radius: 8px;
+}
+
+.about p {
+    max-width: 50%;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Gallery Section */
+.gallery {
+    background-color: #ecf0f1;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .carousel {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.imagens {
     display: flex;
-    transition: transform 0.5s ease;
+    justify-content: center;
+    gap: 15px;
+    overflow: hidden;
 }
 
 .carousel img {
-    width: 1000px;
-    height: 470px;
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s;
 }
 
-.button {
+.carousel img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo do Modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro semi-transparente */
+}
+
+/* Conteúdo da imagem no modal */
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    max-height: 80%;
+    animation: zoomIn 0.3s ease;
+}
+
+/* Animação de zoom */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Legenda abaixo da imagem */
+#caption {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Botão de fechar */
+.close {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 24px;
+    transition: color 0.3s ease;
 }
 
-.prev {
-    left: 10px;
+.close:hover,
+.close:focus {
+    color: #ff0000;
 }
 
-.next {
-    right: 10px;
+
+/* Download Section */
+.download {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
 }
 
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
+.download h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-@keyframes fade {
-    from {opacity: 0.4}
-    to {opacity: 1}
- }
+.download p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.download-buttons .btn {
+    background-color: #f39c12;
+    border-radius: 8px;
+    border: none;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.download-buttons .btn:hover {
+    background-color: #e67e22;
+}
+
+.download-buttons .btn img {
+    width: 30px;
+    height: 30px;
+}
 
 
 /*Rodapé*/
@@ -445,10 +572,13 @@ footer .main {
     margin-top: 20px;
 }
 
-.footer-company, .footer-rental, .footer-contact, .footer-social {
+.footer-company,
+.footer-rental,
+.footer-contact,
+.footer-social {
     color: white;
     height: 100%;
-    min-height: 100px;   
+    min-height: 100px;
 }
 
 .footer-links h4 {
@@ -511,10 +641,12 @@ footer .last {
         width: 50%;
         padding: 0px 10px;
     }
+
     .card-adm img {
         width: 50%;
         padding: 0px 10px;
     }
+
     .card-sec img {
         width: 30%;
         padding: 0px 10px;

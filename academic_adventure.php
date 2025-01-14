@@ -1,136 +1,172 @@
 <?php
 session_start();
+include('conexao.php');
+
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+$jogo_id = 1; // ID do jogo. Você pode substituir com o ID do jogo que deseja favoritar
+
+$is_favorited = false;
+if ($user_id) {
+  $query = "SELECT * FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
+  $stmt = $conn->prepare($query);
+  $stmt->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+  $stmt->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
+  $stmt->execute();
+
+  if ($stmt->rowCount() > 0) {
+    $is_favorited = true;
+  }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameVerse - Home</title>
-    <link rel="stylesheet" href="/HTML_PROJECT/styles/academic_adventure.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <script src="/HTML_PROJECT/scripts/script-header.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameVerse - Academic Adventure</title>
+  <link rel="stylesheet" href="/HTML_PROJECT/styles/academic_adventure.css">
+  <script src="/HTML_PROJECT/scripts/academic_adventure.js" defer></script>
 </head>
+
 <body>
-
-<header>
+  <header>
     <div class="content">
-        <nav>
-            <p class="brand">
-                <a href="index.php">Game<strong>Verse</strong></a>
-            </p>
-            <ul>
-                  <li><a href="index.php#games">Jogos</a></li>
-                  <li><a href="index.php#galery">Baixar</a></li>
-                  <li><a href="index.php#about">Sobre</a></li>
-              
+      <nav>
+        <p class="brand">
+          <a href="index.php">Game<strong>Verse</strong></a>
+        </p>
+        <ul>
+          <li><a href="index.php#games">Jogos</a></li>
+          <li><a href="index.php#galery">Notícias</a></li>
+          <li><a href="index.php#about">Sobre</a></li>
+          <?php if (isset($_SESSION['usuario'])): ?>
+            <li class="dropdown">
+              <div class="user-container" onclick="toggleDropdown()">
+                <span>Olá, <?php echo $_SESSION['usuario']; ?></span>
+                <i class="uil uil-user-circle"></i>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a href="myaccount.php">Minha Conta</a></li>
+                <li><a href="jogos_favoritos.php">Jogos Favoritos</a></li>
+                <li><a href="reviews.php">Minhas Avaliações</a></li>
+              </ul>
+            </li>
+            <li><button onclick="window.location.href='logout.php'">Sair</button></li>
+          <?php else: ?>
+            <li><button onclick="window.location.href='login.php'">Entrar</button></li>
+          <?php endif; ?>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-                <?php if (isset($_SESSION['usuario'])): ?>
-                    <!-- Dropdown para o usuário logado -->
-                    <li class="dropdown">
-                        <div class="user-container" onclick="toggleDropdown()">
-                            <span>Olá, <?php echo $_SESSION['usuario']; ?></span>
-                            <i class="uil uil-user-circle"></i>
-                        </div>
-                        <ul class="dropdown-menu">
-                            <li><a href="myaccount.php">Minha Conta</a></li>
-                            <li><a href="jogos_favoritos.php">Jogos Favoritos</a></li>
-                            <li><a href="reviews.php">Minhas Avaliações</a></li>
-                        </ul>
-                    </li>
-                    <li><button onclick="window.location.href='logout.php'">Sair</button></li>
-                <?php else: ?>
-                    <li><button onclick="window.location.href='login.php'">Entrar</button></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
-    </header>
-    
+  <main>
+  <!-- Section Inicial -->
+  <section class="hero">
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop id="hero-video">
+      <source src="/HTML_PROJECT/assets/video-bg.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
 
-   
-
-<section class="sobre">
-<div id= "background">
- 
- <img src="assets/Academic Adventure.png" alt="">
-         </div> 
-<div class= "texto">
-<div class="titulo">Sobre</div>
-<p>Os jogadores mergulham em uma emocionante aventura ambientada em uma instituição de ensino voltada para a tecnologia da informação. Com o objetivo de conquistar o tão almejado diploma, os participantes exploram ambientes interativos, enfrentam desafios relacionados a programação, redes e segurança da informação, e resolvem quebra-cabeças tecnológicos.  Ao longo da jornada, os jogadores desenvolvem habilidades essenciais, desbloqueiam conhecimentos e se conectam com personagens intrigantes, enquanto aprendem sobre o mundo da TI. Prepare-se para uma experiência envolvente que une aprendizado e diversão em busca do sucesso acadêmico</p>
-</div>
+    <div class="hero-content">
+      <img src="/HTML_PROJECT/assets/logo-game.jpg" alt="Banner do Jogo" class="hero-image">
+      <div class="hero-text">
+        <h1>Academic Adventure</h1>
+        <p>Embarque em uma emocionante jornada pelo mundo da TI. Resolva desafios, conquiste conhecimentos e alcance seu diploma!</p>
+        <button onclick="window.location.href='#download'" class="download-btn">Baixar Agora</button>
+      </div>
+      
+      <!-- Botão Favoritar ao lado da imagem -->
+      <?php if ($user_id): ?>
+        <div class="favorite-container" id="favorite-container">
+          <div class="favorite-icon" onclick="toggleFavorite()" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;">
+            &#9829; <!-- Coração -->
+          </div>
+          <span id="favorite-text"><?php echo $is_favorited ? 'Favoritado' : 'Favoritar'; ?></span>
+        </div>
+      <?php endif; ?>
+    </div>
   </section>
 
-<section class="galery" id="galery">
+  <!-- Outras Seções -->
+  <!-- Section Sobre -->
+  <section id="about" class="about">
+    <h2>Sobre o Jogo</h2>
+    <div class="about-content">
+      <img src="/HTML_PROJECT/assets/logo-game.jpg" alt="Sobre o jogo" class="about-image">
+      <p>Os jogadores mergulham em uma aventura ambientada em uma instituição de ensino voltada para a tecnologia da informação. Explore ambientes interativos, enfrente desafios e desenvolva habilidades essenciais enquanto desbloqueia conhecimentos e interage com personagens intrigantes.</p>
+    </div>
+  </section>
 
-  <div id= "video">
- 
- <video loop autoplay muted>
+  <!-- Sections do Carrousel -->
+  <section id="gallery" class="gallery">
+    <h2>Galeria</h2>
+    <div class="carousel">
+      <img src="/HTML_PROJECT/assets/imagem_1.jpg" alt="Imagem 1" onclick="openModal(this)">
+      <img src="/HTML_PROJECT/assets/imagem_1.jpg" alt="Imagem 2" onclick="openModal(this)">
+      <img src="/HTML_PROJECT/assets/imagem_1.jpg" alt="Imagem 3" onclick="openModal(this)">
+    </div>
+  </section>
 
- <source src="assets/VIDEO.mp4">
-         </video>
+  <!-- Modal com as imagens-->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+  </div>
 
-         </div>
-      </section>
-</section>
+  <!-- Section de Download -->
+  <section id="download" class="download">
+    <h2>Baixe Agora</h2>
+    <p>Disponível para sistema Windows 10 e 11. Clique no logotipo do sistema operacional para fazer o download.</p>
+    <div class="download-buttons">
+      <button class="btn google">
+        <img src="/HTML_PROJECT/assets/store2.png" alt="Windows">
+        Windows
+      </button>
+    </div>
+  </section>
+</main>
 
-<section id= baixar class="download">
-<div class="conteudo_baixar">
- <h1>Baixe agora</h1>
- <br>
- <p>Nossos aplicativos funcionam em dispositivos Android e iOS. <br>Faça o download da versão correta para seu dispositivo <br>clicando no logotipo do sistema operacional apropriado abaixo.</p>
 
- <button class="botao">
-     <img src="assets/apple.png" alt="Descrição da imagem">
-     Baixar na App Store
- </button>
 
- <button class="botao_2">
-     <img src="assets/playstore.png" alt="Descrição da imagem">
-     Disponivel no Google Play
 
- </button>
 
- <p>Estude jogando e turbina seus conhecimentos!
- 👉 Comece agora: www.GameVerse.com</p>
- </div>
- <div class="imagem_2">
-  <img src="assets/MainChar2D.png" alt="">
- </div>
- </section>
+  <footer>
+    <div class="main">
+      <div class="content footer-links">
+        <div class="footer-company">
+          <h4>Nosso Site</h4>
+          <h6>Sobre</h6>
+          <h6>Contato</h6>
+        </div>
+        <div class="footer-social">
+          <h4>Mantenha-se Conectado</h4>
+          <div class="social-icons">
+            <img src="/HTML_PROJECT/assets/instagram.png" alt="Instagram">
+            <img src="/HTML_PROJECT/assets/facebook.png" alt="Facebook">
+            <img src="/HTML_PROJECT/assets/whatsapp-svgrepo-com.png" alt="Whatsapp">
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h4>Nosso Contato</h4>
+          <h6>+55 31 988776644</h6>
+          <h6>turma0043@gmail.com</h6>
+          <h6>R. Paineiras, 1300 - Eldorado, Contagem - MG</h6>
+        </div>
+      </div>
+    </div>
+    <div class="last">
+      GameVerse
+    </div>
+  </footer>
 
->
-   
-    <footer>
-        <div class="main">
-            <div class="content footer-links">
-              <div class="footer-company">
-                <h4>Nosso Site</h4>
-                <h6>Sobre</h6>
-                
-              </div>
-                <div class="footer-social">
-                  <h4>Mantenha-se Conectado</h4>
-                  <div class="social-icons">
-                    <img src="/HTML_PROJECT/assets/instagram.png" alt="Instagram">
-                    <img src="/HTML_PROJECT/assets/facebook.png" alt="Facebook">
-                    <img src="/HTML_PROJECT/assets/whatsapp-svgrepo-com.png" alt="Whatsapp">
-                  </div>
-                </div>
-                <div class="footer-contact">
-                  <h4>Nosso Contato</h4>
-                  <h6>+55 31 988776644</h6>
-                  <h6>turma0043@gmail.com</h6>
-                  <h6>R. Paineiras, 1300 - Eldorado, Contagem - MG</h6>
-                </div>
-              </div>
-            </div>
-            <div class="last">
-              GameVerse
-            </div>
-      </footer>
-    <script src="/HTML_PROJECT/scripts/drop.js"></script>
-
+  <script src="/HTML_PROJECT/scripts/drop.js"></script>
+  <script src="/HTML_PROJECT/scripts/game.js"></script>
 </body>
+
 </html>
