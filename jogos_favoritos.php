@@ -23,8 +23,14 @@ $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
 $stmt->execute();
 
 $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
+// Mapeamento de classes para jogos específicos
+$class_map = [
+    '1' => 'card-item_fav-0',
+    '2' => 'card-item_fav-1',
+    '3' => 'card-item_fav-2',
+];
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -85,7 +91,11 @@ $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card-wrapper">
                 <?php foreach ($favoritos as $jogo): ?>
-                    <div class="card-item_fav">
+                    <?php
+                    // Determinar a classe CSS com base no nome do jogo
+                    $class = isset($class_map[$jogo['id']]) ? $class_map[$jogo['id']] : 'card-item_fav-default';
+                    ?>
+                    <div class="card-item_fav <?= $class ?>">
                         <!-- Ícone de favoritar dentro do card -->
                         <div class="favorite-icon" onclick="toggleFavorite(this)" data-id-jogo="<?= $jogo['id'] ?>" data-favoritado="true" style="color: red;">
                             &#9829; <!-- Coração para indicar que está favoritado -->

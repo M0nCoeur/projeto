@@ -65,9 +65,9 @@ if ($user_id) {
       <div class="header-block">
         <div class="carousel-header">
           <div class="imagens-header fade-header">
-            <img src="/HTML_PROJECT/assets/Group 1.png" alt="Imagem1">
+            <img src="/HTML_PROJECT/assets/Slide1.png" alt="Imagem1">
             <img src="/HTML_PROJECT/assets/Group 2.png" alt="Imagem2">
-            <img src="/HTML_PROJECT/assets/lançamento1.png" alt="Imagem3">
+            <img src="/HTML_PROJECT/assets/Group 1.png" alt="Imagem3">
           </div>
           <button class="button-header prev-header" onclick="move(-1)">&#10094;</button>
           <button class="button-header next-header" onclick="move(1)">&#10095;</button>
@@ -75,7 +75,7 @@ if ($user_id) {
       </div>
     </div>
   </header>
-
+  
   <section class="catalog" id="games">
     <div class="content">
       <div class="title-wrapper-catalog">
@@ -93,6 +93,7 @@ if ($user_id) {
         <button class="search-button" onclick="filtergames()">Buscar</button>
       </div>
 
+      <!-- Card Academic Adventure -->
       <div class="card-wrapper">
         <div class="card-item">
           <?php
@@ -101,11 +102,43 @@ if ($user_id) {
           ?>
           <div class="favorite-icon" onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)" data-id-jogo="<?php echo $jogo_id; ?>" data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;"> &#9829; <!-- Coração -->
           </div>
-          <img src="/HTML_PROJECT/assets/Academic Adventure.png" alt="adventure" />
+          <img src="/HTML_PROJECT/assets/logo-sem-fundo.png" alt="adventure" />
           <div class="card-content">
             <h3>Academic Adventure</h3>
-            <p>Academic Adventure é um jogo de aventura...</p>
+            <p>Uma jornada educativa na área de TI, cheia de desafios e descobertas rumo ao diploma!</p>
             <button type="button" onclick="window.location.href='academic_adventure.php'">Veja Mais</button>
+          </div>
+        </div>
+
+        <!-- Card Adm -->
+        <div class="card-adm">
+          <?php
+          $jogo_id = 2; // ID do jogo (no futuro, este valor será dinâmico)
+          $is_favorited = in_array($jogo_id, $favorited_games);
+          ?>
+          <div class="favorite-icon-adm" onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)" data-id-jogo="<?php echo $jogo_id; ?>" data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;"> &#9829; <!-- Coração -->
+          </div>
+          <img src="/HTML_PROJECT/assets/adm.png" alt="adm" />
+          <div class="card-content-adm">
+            <h3>Academic Administração</h3>
+            <p>Uma jornada educativa na área de TI, cheia de desafios e descobertas rumo ao diploma!</p>
+            <button type="button">Em Breve </button>
+          </div>
+        </div>
+
+        <!-- Card Security -->
+        <div class="card-sec">
+          <?php
+          $jogo_id = 3; // ID do jogo (no futuro, este valor será dinâmico)
+          $is_favorited = in_array($jogo_id, $favorited_games);
+          ?>
+          <div class="favorite-icon-sec" onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)" data-id-jogo="<?php echo $jogo_id; ?>" data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;"> &#9829; <!-- Coração -->
+          </div>
+          <img src="/HTML_PROJECT/assets/security.png" alt="adm" />
+          <div class="card-content-sec">
+            <h3>Academic Security</h3>
+            <p>Uma jornada educativa na área de TI, cheia de desafios e descobertas rumo ao diploma!</p>
+            <button type="button">Em Breve </button>
           </div>
         </div>
 
