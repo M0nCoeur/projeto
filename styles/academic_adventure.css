@@ -293,23 +293,29 @@ nav ul button:hover {
 /* Início */
 
 .hero {
-    position: relative; /* Necessário para sobrepor o conteúdo sobre o vídeo */
+    position: relative;
+    /* Necessário para sobrepor o conteúdo sobre o vídeo */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     padding: 50px 0;
     text-align: center;
-    overflow: hidden; /* Garante que nada saia da área visível */
+    overflow: hidden;
+    /* Garante que nada saia da área visível */
 }
 
 .hero #hero-video {
-    position: absolute; /* Coloca o vídeo atrás do conteúdo */
+    position: absolute;
+    /* Coloca o vídeo atrás do conteúdo */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz o vídeo cobrir toda a área da .hero */
-    z-index: 1; /* Coloca o vídeo atrás do conteúdo */
-    opacity: 0.1; /* Ajuste de transparência */
+    object-fit: cover;
+    /* Faz o vídeo cobrir toda a área da .hero */
+    z-index: 1;
+    /* Coloca o vídeo atrás do conteúdo */
+    opacity: 0.1;
+    /* Ajuste de transparência */
 }
 
 .hero .hero-content {
@@ -318,7 +324,8 @@ nav ul button:hover {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    z-index: 1; /* Garante que o conteúdo fique acima do vídeo */
+    z-index: 1;
+    /* Garante que o conteúdo fique acima do vídeo */
 }
 
 .hero .hero-image {
@@ -411,6 +418,242 @@ nav ul button:hover {
     line-height: 1.6;
 }
 
+/* Estilo para o formulário de avaliação */
+.add-review {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.add-review h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.add-review form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-review form label {
+    font-size: 16px;
+    color: #333;
+}
+
+.add-review form select,
+.add-review form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.add-review form select:focus,
+.add-review form textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.add-review form textarea {
+    resize: vertical;
+}
+
+.add-review form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-review form button:hover {
+    background-color: #0056b3;
+}
+
+.add-review form p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 15px;
+}
+
+.add-review form p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.add-review form p a:hover {
+    text-decoration: underline;
+}
+
+/* Estilizando as mensagens dentro da seção add-review */
+.add-review .message {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.add-review .message p {
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+/* Mensagens de erro/sucesso */
+.error-message,
+.success-message {
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: none;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.success-message.show,
+.error-message.show {
+    display: block;
+}
+
+/* Estilo para a seção de avaliações já feitas */
+.reviews-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.reviews-section h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.reviews h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.review-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 9px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-card p {
+    margin: 5px 0;
+}
+
+.review-card strong {
+    font-weight: bold;
+    color: #333;
+}
+
+
+.review {
+    border-bottom: 1px solid #f8f8f8;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review .nota {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+    /* Verde para indicar uma boa avaliação */
+}
+
+.review .comentario {
+    font-size: 16px;
+    color: #555;
+}
+
+.review .data {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+}
+
+.review .nota,
+.review .comentario,
+.review .data {
+    margin-left: 10px;
+}
+
+.review .nota {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.review .nota .star-rating {
+    display: inline-block;
+    font-size: 18px;
+    color: #f5b300;
+    /* Cor amarela para estrelas */
+}
+
+.review .nota .star-rating span {
+    display: inline-block;
+    padding: 0 2px;
+}
+
+.review .nota .star-rating span.filled {
+    color: #f5b300;
+    /* Estrelas preenchidas */
+}
+
+.review .nota .star-rating span.empty {
+    color: #ccc;
+    /* Estrelas vazias */
+}
+
+.review .comentario {
+    font-style: italic;
+}
+
+/* Seção de aviso para avaliações ainda não feitas */
+.no-reviews-message {
+    font-size: 16px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
 /* Gallery Section */
 .gallery {
     background-color: #ecf0f1;
@@ -443,7 +686,8 @@ nav ul button:hover {
 
 /* Estilo do Modal */
 .modal {
-    display: none; /* Escondido por padrão */
+    display: none;
+    /* Escondido por padrão */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -451,7 +695,8 @@ nav ul button:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro semi-transparente */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Fundo escuro semi-transparente */
 }
 
 /* Conteúdo da imagem no modal */
@@ -469,6 +714,7 @@ nav ul button:hover {
         transform: scale(0.7);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;

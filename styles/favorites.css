@@ -336,17 +336,16 @@ section .card-wrapper {
 
 /* Card Adventure*/
 
-section .card-item_fav {
+section .card-item_fav-0 {
+    position: relative;
     height: 400px;
     background-color: var(--gray);
-    margin-bottom: 50px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     box-shadow: 0 2px 14px #0c0c0c;
-    
 }
 
 .card-content {
@@ -357,23 +356,23 @@ section .card-item_fav {
     justify-content: space-around;
 }
 
-.card-item_fav img {
+.card-item_fav-0 img {
     width: 85%;
     margin-top: 20px;
 }
 
-.card-item_fav h4 {
+.card-item_fav-0 h4 {
     width: 90%;
 }
 
-.card-item_fav p {
+.card-item_fav-0 p {
     width: 90%;
     font-style: italic;
     color: #00000070;
     margin-bottom: 5px;
 }
 
-.card-item_fav button {
+.card-item_fav-0 button {
     width: 90%;
     padding: 15px;
     border: none;
@@ -387,32 +386,175 @@ section .card-item_fav {
     margin-bottom: 10px;
 }
 
-.card-item_fav button:hover {
-    background: #ededed;
+.card-item_fav-0 button:hover {
+    background: #cecece;
     color: var(--blue);
 }
 
-.card-item_fav {
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    overflow: hidden;
-}
-
-.favorite-icon {
+.favorite-icon,
+.favorite-icon-adm,
+.favorite-icon-sec {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
     font-size: 36px;
+    color: #ccc;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
-.favorite-icon:hover {
-    color: crimson;
+.favorite-icon:hover,
+.favorite-icon-adm:hover,
+.favorite-icon-sec:hover {
+    color: red;
 }
 
+.favorite-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.success-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+
+/* Card Administração*/
+
+section .card-item_fav-1 {
+    position: relative;
+    height: 400px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 14px #0c0c0c;
+}
+
+.card-content {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.card-item_fav-1 img {
+    width: 55%;
+    margin-top: 10px;
+}
+
+.card-item_fav-1 h4 {
+    width: 90%;
+}
+
+.card-item_fav-1 p {
+    width: 90%;
+    font-style: italic;
+    color: #00000070;
+    margin-bottom: 5px;
+}
+
+.card-item_fav-1 button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background: var(--blue);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.card-item_fav-1 button:hover {
+    background: #cecece;
+    color: var(--blue);
+}
+
+/* Card Security*/
+
+section .card-item_fav-2 {
+    position: relative;
+    height: 400px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 14px #0c0c0c;
+}
+
+.card-content {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.card-item_fav-2 img {
+    width: 48%;
+    margin-top: 40px;
+}
+
+.card-item_fav-2 h4 {
+    width: 90%;
+    margin-bottom: 5px;
+}
+
+.card-item_fav-2 p {
+    width: 90%;
+    font-style: italic;
+    color: #00000070;
+    margin-bottom: 5px;
+}
+
+.card-item_fav-2 button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background: var(--blue);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.card-item_fav-2 button:hover {
+    background: #cecece;
+    color: var(--blue);
+}
 .no-favorites-message {
     text-align: center;
     font-size: 24px;

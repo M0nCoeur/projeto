@@ -146,7 +146,7 @@ nav ul button:hover {
     /* Cor para logout */
 }
 
-/* Hover effects */
+/* Efeitos Hover */
 .login-button:hover,
 .logout-button:hover {
     opacity: 0.8;
@@ -406,11 +406,13 @@ section .card-item {
 }
 
 .card-item button:hover {
-    background: #ededed;
+    background: #cecece;
     color: var(--blue);
 }
 
-.favorite-icon {
+.favorite-icon,
+.favorite-icon-adm,
+.favorite-icon-sec {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -420,11 +422,9 @@ section .card-item {
     transition: color 0.3s ease;
 }
 
-.favorite-icon:hover {
-    color: crimson;
-}
-
-.favorite-icon.favorited {
+.favorite-icon:hover,
+.favorite-icon-adm:hover,
+.favorite-icon-sec:hover {
     color: red;
 }
 
@@ -461,6 +461,7 @@ section .card-item {
 /* Card Administração*/
 
 section .card-adm {
+    position: relative;
     height: 400px;
     background-color: var(--gray);
     border-radius: 8px;
@@ -505,37 +506,44 @@ section .card-adm {
     color: white;
     font-weight: bold;
     font-size: 1.1em;
-    cursor: pointer;
+    cursor: not-allowed;
     transition: 0.3s ease;
     margin-bottom: 10px;
 }
 
-.card-adm button:hover {
-    background: #ededed;
-    color: var(--blue);
+.favorite-message-adm {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.favorite-icon-adm {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 36px;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.favorite-icon-adm:hover {
-    color: red;
-}
-
-.favorite-icon-adm.favorited {
-    color: red;
+.success-message-adm {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 /* Card Security*/
 
 section .card-sec {
+    position: relative;
     height: 400px;
     background-color: var(--gray);
     border-radius: 8px;
@@ -581,33 +589,11 @@ section .card-sec {
     color: white;
     font-weight: bold;
     font-size: 1.1em;
-    cursor: pointer;
+    cursor: not-allowed;
     transition: 0.3s ease;
     margin-bottom: 10px;
 }
 
-.card-sec button:hover {
-    background: #ededed;
-    color: var(--blue);
-}
-
-.favorite-icon-sec {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 36px;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.favorite-icon-sec:hover {
-    color: red;
-}
-
-.favorite-icon-sec.favorited {
-    color: red;
-}
 
 /*Notícias*/
 
