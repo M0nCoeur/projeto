@@ -65,7 +65,7 @@ if ($user_id) {
       <div class="header-block">
         <div class="carousel-header">
           <div class="imagens-header fade-header">
-            <img src="/HTML_PROJECT/assets/Slide1.png" alt="Imagem1">
+            <img src="/HTML_PROJECT/assets/Group 2.png" alt="Imagem1">
             <img src="/HTML_PROJECT/assets/Group 2.png" alt="Imagem2">
             <img src="/HTML_PROJECT/assets/Group 1.png" alt="Imagem3">
           </div>
@@ -155,9 +155,10 @@ if ($user_id) {
       </div>
       <div class="carousel">
         <div class="imagens fade">
-          <img src="/HTML_PROJECT/assets/Group 1.png" alt="Imagem1">
-          <img src="/HTML_PROJECT/assets/Group 2.png" alt="Imagem2">
-          <img src="/HTML_PROJECT/assets/lançamento1.png" alt="Imagem3">
+          <img src="/HTML_PROJECT/assets/slide4.png" alt="Imagem1">
+          <img src="/HTML_PROJECT/assets/slide5.png" alt="Imagem2">
+          <img src="/HTML_PROJECT/assets/Slide6.png" alt="Imagem3">
+          <img src="/HTML_PROJECT/assets/Slide1.png" alt="Imagem3">
         </div>
         <button class="button prev" onclick='move(-1)'>&#10094;</button>
         <button class="button next" onclick='move(1)'>&#10095;</button>
