@@ -21,7 +21,7 @@ html,
 body {
     width: 100%;
     overflow-x: hidden;
-    background: radial-gradient(#ffce8e, #f78b00);
+    background: radial-gradient(#788fd8, #00285f);
     scroll-behavior: smooth;
 }
 
@@ -293,7 +293,7 @@ nav ul button:hover {
 /* Catalogo */
 
 section .title-wrapper-catalog {
-    color: var(--blue);
+    color: white;
 }
 
 section .catalog {
@@ -598,7 +598,7 @@ section .card-sec {
 /*Notícias*/
 
 section .texto {
-    color: var(--blue);
+    color: white;
     margin-bottom: 20px;
 }
 

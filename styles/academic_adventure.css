@@ -565,6 +565,8 @@ nav ul button:hover {
     padding: 15px;
     margin: 9px 0;
     border-radius: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -646,6 +648,35 @@ nav ul button:hover {
     font-style: italic;
 }
 
+.review .nota .star-rating {
+    display: inline-block;
+    font-size: 18px; /* Ajuste o tamanho do ícone conforme necessário */
+    color: #f5b300; /* Cor das estrelas cheias */
+}
+
+.review .nota .star-rating i {
+    margin-right: 30px; /* Espaço entre as estrelas */
+}
+
+.review .nota .star-rating .far.fa-star {
+    color: #e8f800; /* Cor para as estrelas vazias */
+}
+
+.star-rating i {
+    font-size: 20px;
+    color: #ccc; /* Cor padrão para estrelas vazias */
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .star-rating i:hover {
+    color: #f5b300; /* Cor das estrelas ao passar o mouse */
+    transform: scale(1.2); /* Aumenta o tamanho da estrela */
+  }
+  
+  .star-rating i.fas {
+    color: #f5b300; /* Cor para estrelas preenchidas */
+  }
+  
 /* Seção de aviso para avaliações ainda não feitas */
 .no-reviews-message {
     font-size: 16px;
@@ -792,6 +823,32 @@ nav ul button:hover {
 .download-buttons .btn img {
     width: 30px;
     height: 30px;
+}
+
+#show-all-reviews {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white;              /* Cor do texto */
+    font-size: 16px;           /* Tamanho da fonte */
+    padding: 12px 20px;        /* Espaçamento interno */
+    border: none;              /* Sem borda */
+    border-radius: 5px;        /* Bordas arredondadas */
+    cursor: pointer;          /* Cursor de ponteiro quando passar por cima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    margin-left: 10px;        /* Espaçamento à esquerda */
+}
+
+#show-all-reviews:hover {
+    background-color: #0056b3; /* Cor de fundo quando passar o mouse */
+    transform: scale(1.05);     /* Leve aumento do tamanho */
+}
+
+#show-all-reviews:active {
+    background-color: #004085; /* Cor de fundo quando o botão for pressionado */
+    transform: scale(1);       /* Retorna ao tamanho normal */
+}
+
+#show-all-reviews:focus {
+    outline: none;             /* Retira a borda de foco */
 }
 
 
