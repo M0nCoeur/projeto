@@ -2,21 +2,33 @@
 session_start();
 include('conexao.php');
 
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-$jogo_id = 1; // ID do jogo. Você pode substituir com o ID do jogo que deseja favoritar
-
-$is_favorited = false;
-if ($user_id) {
+// Função para verificar se o jogo está favoritado
+function isFavorited($conn, $user_id, $jogo_id)
+{
   $query = "SELECT * FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
   $stmt = $conn->prepare($query);
   $stmt->bindParam(':id_user', $user_id, PDO::PARAM_INT);
   $stmt->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
   $stmt->execute();
-
-  if ($stmt->rowCount() > 0) {
-    $is_favorited = true;
-  }
+  return $stmt->rowCount() > 0;
 }
+
+// Função para verificar se o usuário já avaliou o jogo
+function isAlreadyReviewed($conn, $user_id, $jogo_id)
+{
+  $query_check_review = "SELECT * FROM avaliacoes WHERE id_user = :id_user AND id_jogo = :id_jogo";
+  $stmt_check_review = $conn->prepare($query_check_review);
+  $stmt_check_review->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+  $stmt_check_review->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
+  $stmt_check_review->execute();
+  return $stmt_check_review->rowCount() > 0;
+}
+
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+$jogo_id = 1; // ID do jogo
+
+$is_favorited = $user_id ? isFavorited($conn, $user_id, $jogo_id) : false;
+$is_already_reviewed = $user_id ? isAlreadyReviewed($conn, $user_id, $jogo_id) : false;
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +39,10 @@ if ($user_id) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GameVerse - Academic Adventure</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="/HTML_PROJECT/styles/academic_adventure.css">
   <script src="/HTML_PROJECT/scripts/academic_adventure.js" defer></script>
+  <script src="/HTML_PROJECT/scripts/reviews.js" defer></script>
 </head>
 
 <body>
@@ -45,7 +59,7 @@ if ($user_id) {
           <?php if (isset($_SESSION['usuario'])): ?>
             <li class="dropdown">
               <div class="user-container" onclick="toggleDropdown()">
-                <span>Olá, <?php echo $_SESSION['usuario']; ?></span>
+                <span>Olá, <?php echo htmlspecialchars($_SESSION['usuario']); ?></span>
                 <i class="uil uil-user-circle"></i>
               </div>
               <ul class="dropdown-menu">
@@ -64,9 +78,7 @@ if ($user_id) {
   </header>
 
   <main>
-    <!-- Section Inicial -->
     <section class="hero">
-      <!-- Vídeo de fundo -->
       <video autoplay muted loop id="hero-video">
         <source src="https://github.com/M0nCoeur/projeto/raw/main/assets/video-bg.mp4" type="video/mp4">
         Seu navegador não suporta o vídeo.
@@ -80,7 +92,6 @@ if ($user_id) {
           <button onclick="window.location.href='#download'" class="download-btn">Baixar Agora</button>
         </div>
 
-        <!-- Botão Favoritar ao lado da imagem -->
         <?php if ($user_id): ?>
           <div class="favorite-container" id="favorite-container">
             <div class="favorite-icon" onclick="toggleFavorite()" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;">
@@ -92,8 +103,6 @@ if ($user_id) {
       </div>
     </section>
 
-    <!-- Outras Seções -->
-    <!-- Section Sobre -->
     <section id="about" class="about">
       <h2>Sobre o Jogo</h2>
       <div class="about-content">
@@ -102,7 +111,6 @@ if ($user_id) {
       </div>
     </section>
 
-    <!-- Sections do Carrousel -->
     <section id="gallery" class="gallery">
       <h2>Galeria</h2>
       <div class="carousel">
@@ -112,14 +120,82 @@ if ($user_id) {
       </div>
     </section>
 
-    <!-- Modal com as imagens-->
     <div id="imageModal" class="modal">
       <span class="close" onclick="closeModal()">&times;</span>
       <img class="modal-content" id="modalImage">
       <div id="caption"></div>
     </div>
 
-    <!-- Section de Download -->
+    <section id="reviews" class="reviews">
+      <h2>Avaliações</h2>
+      <div class="reviews-container" id="reviews-container">
+        <?php
+        $query_reviews = "SELECT * FROM avaliacoes WHERE id_jogo = :id_jogo LIMIT 5";
+        $stmt_reviews = $conn->prepare($query_reviews);
+        $stmt_reviews->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
+        $stmt_reviews->execute();
+        $reviews = $stmt_reviews->fetchAll();
+
+        if (count($reviews) > 0) {
+          foreach ($reviews as $review) {
+            // Inicia a variável de estrelas
+            $nota = $review['nota'];
+            $stars = '';
+            for ($i = 1; $i <= 5; $i++) {
+              // Verifica se a estrela deve ser cheia ou vazia
+              if ($i <= $nota) {
+                $stars .= '<i class="fas fa-star"></i>'; // Estrela cheia
+              } else {
+                $stars .= '<i class="far fa-star"></i>'; // Estrela vazia
+              }
+            }
+
+            // Exibe a avaliação
+            echo "<div class='review-card'>";
+            echo "<p><strong>Nota:</strong> <span class='star-rating'>$stars</span></p>"; // Exibe as estrelas como ícones
+            echo "<p><strong>Comentário:</strong> " . htmlspecialchars($review['comentario']) . "</p>";
+            echo "<p><small>Por: " . htmlspecialchars($review['id_user']) . " em " . htmlspecialchars($review['data_avaliacao']) . "</small></p>";
+            echo "</div>";
+          }
+        } else {
+          echo "<p>Ainda não há avaliações para este jogo.</p>";
+        }
+        ?>
+      </div>
+
+      <button id="show-all-reviews" onclick="loadMoreReviews()" data-jogo-id="<?php echo $jogo_id; ?>">Ver Mais Avaliações</button>
+      <div id="reviews-list"></div>
+    </section>
+
+
+    <section id="add-review" class="add-review">
+      <?php if ($user_id && !$is_already_reviewed): ?>
+        <h2>Deixe sua Avaliação</h2>
+        <form action="submit_review.php" method="POST" onsubmit="return validateReviewForm()">
+          <input type="hidden" name="id_jogo" value="<?php echo $jogo_id; ?>">
+          <label for="nota">Nota:</label>
+          <select name="nota" id="nota" required>
+            <option value="1">1 Estrela</option>
+            <option value="2">2 Estrelas</option>
+            <option value="3">3 Estrelas</option>
+            <option value="4">4 Estrelas</option>
+            <option value="5">5 Estrelas</option>
+          </select>
+          <label for="comentario">Comentário:</label>
+          <textarea name="comentario" id="comentario" rows="4" required></textarea>
+          <button type="submit">Enviar Avaliação</button>
+        </form>
+      <?php elseif ($user_id && $is_already_reviewed): ?>
+        <div class="message">
+          <p>Você já avaliou este jogo.</p>
+        </div>
+      <?php else: ?>
+        <div class="message">
+          <p>Você precisa estar logado para avaliar o jogo.</p>
+        </div>
+      <?php endif; ?>
+    </section>
+
     <section id="download" class="download">
       <h2>Baixe Agora</h2>
       <p>Disponível para sistema Windows 10 e 11. Clique no logotipo do sistema operacional para fazer o download.</p>
@@ -131,10 +207,6 @@ if ($user_id) {
       </div>
     </section>
   </main>
-
-
-
-
 
   <footer>
     <div class="main">
@@ -164,9 +236,18 @@ if ($user_id) {
       GameVerse
     </div>
   </footer>
-
   <script src="/HTML_PROJECT/scripts/drop.js"></script>
   <script src="/HTML_PROJECT/scripts/game.js"></script>
+  <script>
+    function validateReviewForm() {
+      const comentario = document.getElementById('comentario').value.trim();
+      if (comentario.length < 10) {
+        alert('O comentário deve ter pelo menos 10 caracteres.');
+        return false;
+      }
+      return true;
+    }
+  </script>
 </body>
 
 </html>
