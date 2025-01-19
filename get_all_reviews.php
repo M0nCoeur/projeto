@@ -14,7 +14,14 @@ $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0; // Pega o offset da
 error_log("Fetching reviews for game ID: $jogo_id with offset: $offset");
 
 // Buscar avaliações com base no offset
-$query_reviews = "SELECT * FROM avaliacoes WHERE id_jogo = :id_jogo LIMIT 5 OFFSET :offset";
+$query_reviews = "
+    SELECT avaliacoes.*, user.nome 
+    FROM avaliacoes 
+    JOIN user ON avaliacoes.id_user = user.id_user 
+    WHERE avaliacoes.id_jogo = :id_jogo 
+    ORDER BY avaliacoes.data_avaliacao DESC 
+    LIMIT 5 OFFSET :offset
+";
 $stmt_reviews = $conn->prepare($query_reviews);
 $stmt_reviews->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
 $stmt_reviews->bindParam(':offset', $offset, PDO::PARAM_INT);

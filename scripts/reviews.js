@@ -50,11 +50,12 @@ function renderReviews(reviews) {
         reviewElement.innerHTML = `
             <p><strong>Nota:</strong> <span class="star-rating">${stars}</span></p>
             <p><strong>Comentário:</strong> ${review.comentario}</p>
-            <p><small>Por: ${review.id_user} em ${review.data_avaliacao}</small></p>
+            <p><small>Por: ${review.nome} em ${review.data_avaliacao}</small></p> <!-- Exibe o nome corretamente -->
         `;
         reviewsContainer.appendChild(reviewElement);
     });
 }
+
 
 
 // Função que reposiciona o botão "Ver Mais Avaliações" para o final da lista
