@@ -57,7 +57,6 @@ $class_map = [
                     <li class="dropdown">
                         <div class="user-container" onclick="toggleDropdown()">
                             <span>Olá, <?php echo $_SESSION['usuario']; ?></span>
-                            <i class="uil uil-user-circle"></i>
                         </div>
                         <ul class="dropdown-menu">
                             <li><a href="myaccount.php">Minha Conta</a></li>
