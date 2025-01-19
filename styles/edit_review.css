@@ -33,11 +33,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Estilo da área principal (main) */
-main {
-    flex: 1; /* Isso vai garantir que o main ocupe o espaço restante disponível */
-}
-
 /*Cabeçalho*/
 
 header {
@@ -300,6 +295,20 @@ h1 {
     color: #333;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-container label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+
 .reviews {
     margin-top: 20px;
     display: flex;
@@ -375,6 +384,49 @@ h1 {
     color: gold; /* Cor das estrelas preenchidas */
 }
 
+/* Estilo da textarea */
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    resize: none;
+    box-sizing: border-box; /* Para garantir que o padding não afete a largura total */
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Estilo do botão */
+button {
+    padding: 12px 25px;
+    background-color: #007BFF;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.game-image {
+    width: 40%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
 /*Rodapé*/
 
@@ -384,7 +436,7 @@ footer {
 }
 
 footer .main {
-    margin-top: 30.5vh;
+    margin-top: 13.5vh;
     width: 100%;
     height: 200px;
     background-color: var(--orange);

@@ -453,6 +453,7 @@ nav ul button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 100%;
+    height: 100px;
 }
 
 .add-review form select:focus,
@@ -851,6 +852,75 @@ nav ul button:hover {
     outline: none;             /* Retira a borda de foco */
 }
 
+.game-star-rating {
+    display: flex;
+    cursor: pointer;
+    font-size: 25px; /* Tamanho das estrelas */
+  }
+  
+  .game-star-rating i {
+    color: #ccc; /* Cor das estrelas vazias (cinza claro) */
+    margin: 0 5px;
+    transition: color 0.2s; /* Efeito suave de transição */
+  }
+
+  .star-rating-med {
+    color: #FFD700; /* Cor dourada para as estrelas */
+    font-size: 1.5rem;
+    margin-left: 10px;
+  }
+  
+  .star-rating-med i {
+    margin-right: 2px;
+  }  
+  
+  .game-star-rating i.selected {
+    color: #f39c12; /* Cor dourada para as estrelas selecionadas */
+  }
+  
+  .game-star-rating i.hovered {
+    color: #f39c12; /* Cor dourada para as estrelas durante o hover */
+  }
+
+/* Estilo para a seção de média das avaliações */
+#average-rating {
+    background-color: #f9f9f9;  /* Cor de fundo suave */
+    border: 1px solid #ddd;     /* Borda cinza clara */
+    border-radius: 10px;        /* Bordas arredondadas */
+    padding: 20px;              /* Espaçamento interno */
+    text-align: center;         /* Centralizar o conteúdo */
+    max-width: 600px;           /* Largura máxima */
+    margin: 20px auto;          /* Margem automática para centralizar */
+}
+
+/* Estilo do título "Média das Avaliações" */
+#average-rating h3 {
+    font-size: 1.6rem;          /* Tamanho da fonte */
+    color: #333;                /* Cor escura */
+    margin-bottom: 10px;        /* Espaço abaixo do título */
+}
+
+/* Estilo do parágrafo que exibe a média */
+#average-rating p {
+    font-size: 1.2rem;          /* Tamanho da fonte */
+    color: #666;                /* Cor do texto */
+    margin-top: 10px;           /* Espaço superior */
+}
+
+/* Estilo das estrelas na média */
+.star-rating-med {
+    color: #FFD700;             /* Cor dourada para as estrelas */
+    font-size: 1.4rem;          /* Tamanho das estrelas */
+    margin: 0 5=px;              /* Margem lateral */
+}
+
+/* Estilo da média em número (ex: 4.2/5) */
+#average-rating .average-score {
+    font-weight: bold;          /* Negrito para destacar a média */
+    font-size: 1.6rem;          /* Tamanho maior para a média */
+    color: #333;                /* Cor escura para o número */
+    margin-top: 10px;            /* Espaço acima da média */
+}
 
 /*Rodapé*/
 
