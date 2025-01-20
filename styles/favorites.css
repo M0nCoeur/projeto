@@ -330,7 +330,7 @@ section .card-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     grid-gap: 30px;
-    padding-top: 50px;
+    padding-top: 10px;
     
 }
 
