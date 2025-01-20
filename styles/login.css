@@ -73,6 +73,12 @@ nav {
     text-decoration: none;
 }
 
+nav .brand img {
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+}
+
 .brand a:visited {
     color: inherit; /* Garante que a cor não mude após clicar */
 }

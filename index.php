@@ -36,8 +36,11 @@ if ($user_id) {
     <div class="content">
       <nav>
         <p class="brand">
-          <a href="index.php">Game<strong>Verse</strong></a>
+          <a href="index.php">
+            <img src="/HTML_PROJECT/assets/Logo2.png" alt="Logo GameVerse" class="logo">
+          </a>
         </p>
+
         <ul>
           <li><a href="#games">Jogos</a></li>
           <li><a href="#galery">Notícias</a></li>
@@ -75,7 +78,7 @@ if ($user_id) {
       </div>
     </div>
   </header>
-  
+
   <section class="catalog" id="games">
     <div class="content">
       <div class="title-wrapper-catalog">

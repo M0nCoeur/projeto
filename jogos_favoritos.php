@@ -46,9 +46,11 @@ $class_map = [
 <header>
     <div class="content">
         <nav>
-            <p class="brand">
-                <a href="index.php">Game<strong>Verse</strong></a>
-            </p>
+        <p class="brand">
+          <a href="index.php">
+            <img src="/HTML_PROJECT/assets/Logo2.png" alt="Logo GameVerse" class="logo">
+          </a>
+        </p>
             <ul>
                 <li><a href="index.php#games">Jogos</a></li>
                 <li><a href="index.php#galery">Notícias</a></li>
