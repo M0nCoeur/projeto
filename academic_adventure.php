@@ -5,23 +5,23 @@ include('conexao.php');
 // Função para verificar se o jogo está favoritado
 function isFavorited($conn, $user_id, $jogo_id)
 {
-    $query = "SELECT * FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':id_user', $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->rowCount() > 0;
+  $query = "SELECT * FROM favoritos WHERE id_user = :id_user AND id_jogo = :id_jogo";
+  $stmt = $conn->prepare($query);
+  $stmt->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+  $stmt->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
+  $stmt->execute();
+  return $stmt->rowCount() > 0;
 }
 
 // Função para verificar se o usuário já avaliou o jogo
 function isAlreadyReviewed($conn, $user_id, $jogo_id)
 {
-    $query_check_review = "SELECT * FROM avaliacoes WHERE id_user = :id_user AND id_jogo = :id_jogo";
-    $stmt_check_review = $conn->prepare($query_check_review);
-    $stmt_check_review->bindParam(':id_user', $user_id, PDO::PARAM_INT);
-    $stmt_check_review->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
-    $stmt_check_review->execute();
-    return $stmt_check_review->rowCount() > 0;
+  $query_check_review = "SELECT * FROM avaliacoes WHERE id_user = :id_user AND id_jogo = :id_jogo";
+  $stmt_check_review = $conn->prepare($query_check_review);
+  $stmt_check_review->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+  $stmt_check_review->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
+  $stmt_check_review->execute();
+  return $stmt_check_review->rowCount() > 0;
 }
 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
@@ -50,11 +50,11 @@ $stars = '';
 $rating = round($media_avaliacoes); // Arredonda a média para o inteiro mais próximo
 
 for ($i = 1; $i <= 5; $i++) {
-    if ($i <= $rating) {
-        $stars .= '<i class="fas fa-star"></i>'; // Estrela cheia
-    } else {
-        $stars .= '<i class="far fa-star"></i>'; // Estrela vazia
-    }
+  if ($i <= $rating) {
+    $stars .= '<i class="fas fa-star"></i>'; // Estrela cheia
+  } else {
+    $stars .= '<i class="far fa-star"></i>'; // Estrela vazia
+  }
 }
 
 // Lógica para carregar as primeiras 5 avaliações
@@ -83,7 +83,7 @@ $reviews = $stmt_reviews->fetchAll();
   <header>
     <div class="content">
       <nav>
-      <p class="brand">
+        <p class="brand">
           <a href="index.php">
             <img src="/HTML_PROJECT/assets/Logo2.png" alt="Logo GameVerse" class="logo">
           </a>
@@ -121,7 +121,7 @@ $reviews = $stmt_reviews->fetchAll();
       </video>
 
       <div class="hero-content">
-        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/logo-sem-fundo.png" alt="Banner do Jogo" class="hero-image">
+        <img src="" alt="Banner do Jogo" class="hero-image">
         <div class="hero-text">
           <h1>Academic Adventure</h1>
           <p>Embarque em uma emocionante jornada pelo mundo da TI. Resolva desafios, conquiste conhecimentos e alcance seu diploma!</p>
@@ -166,17 +166,17 @@ $reviews = $stmt_reviews->fetchAll();
       <h2>Avaliações</h2>
       <div class="reviews-container" id="reviews-container">
 
-<!-- Exibição da média das avaliações -->
-<section id="average-rating" class="average-rating">
-    <h3>Média das Avaliações</h3>
-    <p>Este jogo tem uma média de avaliação de: 
-        <span class="star-rating-med"><?php echo $stars; ?></span> 
-        <span class="average-score">(<?php echo $media_avaliacoes; ?>/5)</span>
-    </p>
-</section>
+        <!-- Exibição da média das avaliações -->
+        <section id="average-rating" class="average-rating">
+          <h3>Média das Avaliações</h3>
+          <p>Este jogo tem uma média de avaliação de:
+            <span class="star-rating-med"><?php echo $stars; ?></span>
+            <span class="average-score">(<?php echo $media_avaliacoes; ?>/5)</span>
+          </p>
+        </section>
 
-      <?php
-$query_reviews = "
+        <?php
+        $query_reviews = "
 SELECT avaliacoes.*, user.nome 
 FROM avaliacoes 
 JOIN user ON avaliacoes.id_user = user.id_user 
@@ -184,32 +184,32 @@ WHERE avaliacoes.id_jogo = :id_jogo
 ORDER BY avaliacoes.data_avaliacao DESC 
 LIMIT 5
 ";
-$stmt_reviews = $conn->prepare($query_reviews);
-$stmt_reviews->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
-$stmt_reviews->execute();
-$reviews = $stmt_reviews->fetchAll();
+        $stmt_reviews = $conn->prepare($query_reviews);
+        $stmt_reviews->bindParam(':id_jogo', $jogo_id, PDO::PARAM_INT);
+        $stmt_reviews->execute();
+        $reviews = $stmt_reviews->fetchAll();
 
-if (count($reviews) > 0) {
-foreach ($reviews as $review) {
-    $nota = $review['nota'];
-    $stars = '';
-    for ($i = 1; $i <= 5; $i++) {
-        if ($i <= $nota) {
-            $stars .= '<i class="fas fa-star"></i>'; // Estrela cheia
+        if (count($reviews) > 0) {
+          foreach ($reviews as $review) {
+            $nota = $review['nota'];
+            $stars = '';
+            for ($i = 1; $i <= 5; $i++) {
+              if ($i <= $nota) {
+                $stars .= '<i class="fas fa-star"></i>'; // Estrela cheia
+              } else {
+                $stars .= '<i class="far fa-star"></i>'; // Estrela vazia
+              }
+            }
+
+            echo "<div class='review-card'>";
+            echo "<p><strong>Nota:</strong> <span class='star-rating'>$stars</span></p>";
+            echo "<p><strong>Comentário:</strong> " . htmlspecialchars($review['comentario']) . "</p>";
+            echo "<p><small>Por: " . htmlspecialchars($review['nome']) . " em " . htmlspecialchars($review['data_avaliacao']) . "</small></p>";
+            echo "</div>";
+          }
         } else {
-            $stars .= '<i class="far fa-star"></i>'; // Estrela vazia
+          echo "<p>Ainda não há avaliações para este jogo.</p>";
         }
-    }
-
-    echo "<div class='review-card'>";
-    echo "<p><strong>Nota:</strong> <span class='star-rating'>$stars</span></p>";
-    echo "<p><strong>Comentário:</strong> " . htmlspecialchars($review['comentario']) . "</p>";
-    echo "<p><small>Por: " . htmlspecialchars($review['nome']) . " em " . htmlspecialchars($review['data_avaliacao']) . "</small></p>";
-    echo "</div>";
-}
-} else {
-echo "<p>Ainda não há avaliações para este jogo.</p>";
-}
 
         ?>
       </div>
@@ -220,38 +220,38 @@ echo "<p>Ainda não há avaliações para este jogo.</p>";
 
 
     <section id="add-review" class="add-review">
-  <?php if ($user_id && !$is_already_reviewed): ?>
-    <h2>Deixe sua Avaliação</h2>
-    <form action="submit_review.php" method="POST" onsubmit="return validateReviewForm()">
-      <input type="hidden" name="id_jogo" value="<?php echo $jogo_id; ?>">
+      <?php if ($user_id && !$is_already_reviewed): ?>
+        <h2>Deixe sua Avaliação</h2>
+        <form action="submit_review.php" method="POST" onsubmit="return validateReviewForm()">
+          <input type="hidden" name="id_jogo" value="<?php echo $jogo_id; ?>">
 
-      <!-- Nova seção para as estrelas -->
-      <label for="nota">Nota:</label>
-      <div class="game-star-rating" id="game-rating">
-        <i class="fas fa-star" data-value="1"></i>
-        <i class="fas fa-star" data-value="2"></i>
-        <i class="fas fa-star" data-value="3"></i>
-        <i class="fas fa-star" data-value="4"></i>
-        <i class="fas fa-star" data-value="5"></i>
-      </div>
+          <!-- Nova seção para as estrelas -->
+          <label for="nota">Nota:</label>
+          <div class="game-star-rating" id="game-rating">
+            <i class="fas fa-star" data-value="1"></i>
+            <i class="fas fa-star" data-value="2"></i>
+            <i class="fas fa-star" data-value="3"></i>
+            <i class="fas fa-star" data-value="4"></i>
+            <i class="fas fa-star" data-value="5"></i>
+          </div>
 
-      <input type="hidden" id="nota" name="nota" value="0"> <!-- Valor da nota -->
-      
-      <label for="comentario">Comentário:</label>
-      <textarea name="comentario" id="comentario" rows="4" required></textarea>
-      
-      <button type="submit">Enviar Avaliação</button>
-    </form>
-  <?php elseif ($user_id && $is_already_reviewed): ?>
-    <div class="message">
-      <p>Você já avaliou este jogo.</p>
-    </div>
-  <?php else: ?>
-    <div class="message">
-      <p>Você precisa estar logado para avaliar o jogo.</p>
-    </div>
-  <?php endif; ?>
-</section>
+          <input type="hidden" id="nota" name="nota" value="0"> <!-- Valor da nota -->
+
+          <label for="comentario">Comentário:</label>
+          <textarea name="comentario" id="comentario" rows="4" required></textarea>
+
+          <button type="submit">Enviar Avaliação</button>
+        </form>
+      <?php elseif ($user_id && $is_already_reviewed): ?>
+        <div class="message">
+          <p>Você já avaliou este jogo.</p>
+        </div>
+      <?php else: ?>
+        <div class="message">
+          <p>Você precisa estar logado para avaliar o jogo.</p>
+        </div>
+      <?php endif; ?>
+    </section>
 
 
 

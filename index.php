@@ -137,7 +137,7 @@ if ($user_id) {
           ?>
           <div class="favorite-icon-sec" onclick="toggleFavorite(this, <?php echo $jogo_id; ?>)" data-id-jogo="<?php echo $jogo_id; ?>" data-favoritado="<?php echo $is_favorited ? 'true' : 'false'; ?>" style="color: <?php echo $is_favorited ? 'red' : ''; ?>;"> &#9829; <!-- Coração -->
           </div>
-          <img src="/HTML_PROJECT/assets/security.png" alt="adm" />
+          <img src="/HTML_PROJECT/assets/Logo4.png" alt="adm" />
           <div class="card-content-sec">
             <h3>Academic Security</h3>
             <p>Uma jornada educativa na área de TI, cheia de desafios e descobertas rumo ao diploma!</p>
