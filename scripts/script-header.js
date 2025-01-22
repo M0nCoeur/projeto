@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextButton) nextButton.addEventListener('click', () => move(1));
 
         // Movimento automático
-        setInterval(() => move(1), 3000);
+        setInterval(() => move(1), 6000);
     }
 
     // Inicializar o primeiro carousel (header)

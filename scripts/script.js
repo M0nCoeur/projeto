@@ -22,5 +22,5 @@ function autoMove() {
 }
 
 // Chama a função autoMove a cada 3 segundos (3000ms)
-setInterval(autoMove, 3000);
+setInterval(autoMove, 6000);
 
