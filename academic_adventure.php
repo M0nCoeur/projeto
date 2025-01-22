@@ -121,7 +121,7 @@ $reviews = $stmt_reviews->fetchAll();
       </video>
 
       <div class="hero-content">
-        <img src="" alt="Banner do Jogo" class="hero-image">
+        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/logo-sem-fundo.png" alt="Banner do Jogo" class="hero-image">
         <div class="hero-text">
           <h1>Academic Adventure</h1>
           <p>Embarque em uma emocionante jornada pelo mundo da TI. Resolva desafios, conquiste conhecimentos e alcance seu diploma!</p>
@@ -150,9 +150,9 @@ $reviews = $stmt_reviews->fetchAll();
     <section id="gallery" class="gallery">
       <h2>Galeria</h2>
       <div class="carousel">
-        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/imagem_1.jpg" alt="Imagem 1" onclick="openModal(this)">
-        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/imagem_1.jpg" alt="Imagem 2" onclick="openModal(this)">
-        <img src="https://github.com/M0nCoeur/projeto/raw/main/assets/imagem_1.jpg" alt="Imagem 3" onclick="openModal(this)">
+        <img src="/HTML_PROJECT/assets/imagem_1" alt="Imagem 1" onclick="openModal(this)">
+        <img src="/HTML_PROJECT/assets/imagem_2" alt="Imagem 2" onclick="openModal(this)">
+        <img src="/HTML_PROJECT/assets/imagem_3" alt="Imagem 3" onclick="openModal(this)">
       </div>
     </section>
 
