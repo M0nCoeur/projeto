@@ -79,9 +79,9 @@ nav {
     text-decoration: none;
 }
 
-.brand img {
-    width: 100px;
-    height: 100px;
+nav .brand .logo {
+    width: 130px;
+    height: 130px;
     margin-left: 20px;
 }
 
