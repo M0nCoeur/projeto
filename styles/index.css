@@ -17,12 +17,208 @@
 
 /*Config-Geral*/
 
-html,
-body {
+html, body {
     width: 100%;
     overflow-x: hidden;
     background: radial-gradient(#788fd8, #00285f);
     scroll-behavior: smooth;
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+}
+
+body.large-font {
+    font-size: 18px;
+}
+
+body.small-font {
+    font-size: 14px;
+}
+
+/* Estilo para modo de contraste */
+body.high-contrast {
+    background-color: black;
+    color: white;
+}
+
+/* Modificar o header */
+body.high-contrast header {
+    background-color: #222;
+    color: white;
+}
+
+/* Modificar as sections */
+body.high-contrast section {
+    background-color: #333;
+    color: white;
+}
+
+/* Estilo para o footer no modo de contraste */
+body.high-contrast footer {
+    background-color: #444; /* Fundo preto no modo de contraste */
+    color: white; /* Cor do texto branca no modo de contraste */
+}
+
+body.high-contrast footer a {
+    color: #f78b00; /* Links do footer em cor laranja */
+}
+
+/* Modificar o 'last' (último bloco) */
+body.high-contrast .last {
+    background-color: #111;
+    color: white;
+}
+
+/* Modificar o card-sec */
+body.high-contrast .card-sec {
+    background-color: #444;
+    color: white;
+}
+
+body.high-contrast .card-sec button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar o card-item */
+body.high-contrast .card-item {
+    background-color: #444;
+    color: white;
+}
+
+body.high-contrast .card-item button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar o card-adm */
+body.high-contrast .card-adm {
+    background-color: #444;
+    color: white;
+}
+
+body.high-contrast .card-adm button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar o feature-card-block */
+body.high-contrast .feature-card-block {
+    background-color: #444; /* Fundo escuro */
+    color: white; /* Texto claro */
+}
+
+
+/* Modificar os ícones dentro da feature-card-block */
+body.high-contrast .feature-card-block i {
+    color: #f78b00; /* Ícones laranja */
+}
+
+/* Modificar os ícones dentro do filter-card */
+body.high-contrast .filter-card {
+    background-color: #444;
+}
+body.high-contrast .filter-card input {
+    background-color: #666;
+    color: wheat;
+}
+
+/* Modificar os links */
+body.high-contrast a {
+    color: #f78b00; /* Links em laranja */
+}
+
+/* Alterando o comportamento dos ícones no footer */
+body.high-contrast .footer-social img {
+    filter: brightness(0) invert(1); /* Inverter cores para ícones sociais visíveis */
+}
+
+/* Modificar o texto nos botões */
+body.high-contrast button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar o painel de acessibilidade */
+body.high-contrast .accessibility-controls {
+    background-color: #333;
+    color: white;
+}
+
+body.high-contrast #open-accessibility button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar os links no footer */
+body.high-contrast .footer-links h4,
+body.high-contrast .footer-links h6 {
+    color: white;
+}
+
+/* Estilo do botão quando o modo de alto contraste está ativado */
+body.high-contrast #open-accessibility {
+    background-color: #f78b00; /* Cor de fundo laranja */
+    color: white; /* Cor do texto em branco */
+}
+
+/* Estilo do botão quando o modo de contraste não está ativado */
+body:not(.high-contrast) #open-accessibility {
+    background-color: #fff;
+    color: black;
+}
+
+
+/* Estilo do painel de acessibilidade */
+.accessibility-controls {
+    font-size: 16px;
+    position: fixed;
+    bottom: 80px; /* Distância inicial de onde o botão está */
+    right: 20px; /* Posiciona à direita */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(218, 145, 9, 0.5);
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(20px); /* Inicialmente movido para baixo */
+    visibility: hidden; /* Inicialmente oculto */
+    transition: opacity 0.5s ease, transform 0.5s ease-in-out; /* Animações de opacidade e movimento */
+    z-index: 9999;
+}
+
+/* Mostrar o painel com animação */
+.accessibility-controls.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Ao aparecer, o painel desliza para o lugar correto */
+}
+
+/* Estilo para o botão de abrir acessibilidade */
+#open-accessibility {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(218, 145, 9, 0.5);
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Estilo para o botão de fechar */
+#close-accessibility {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.accessibility-controls button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /*Cabeçalho*/
@@ -71,11 +267,12 @@ nav {
     /* Garante que a cor não mude após clicar */
 }
 
-.brand img {
+nav .brand .logo {
     width: 100px;
     height: 100px;
+    margin-top: 20px;
     margin-left: 20px;
-}	
+}
 
 nav ul {
     display: flex;
@@ -398,6 +595,7 @@ section .card-item {
 
 .card-item button {
     width: 90%;
+    max-width: 100%;  /* Garante que o botão não ultrapasse a largura do card */
     padding: 15px;
     border: none;
     background: var(--blue);
@@ -438,7 +636,8 @@ section .card-item {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #28a745; /* Verde para sucesso */
+    background-color: #28a745;
+    /* Verde para sucesso */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -478,17 +677,17 @@ section .card-adm {
 }
 
 .card-content-adm {
-    height: 40%;
+    height: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
 }
 
 .card-adm img {
-    width: 70%;
-    margin-top: 10px;
+    width: 50%;
+    margin-top: 15px;
 }
 
 .card-adm h4 {
@@ -521,7 +720,8 @@ section .card-adm {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #28a745; /* Verde para sucesso */
+    background-color: #28a745;
+    /* Verde para sucesso */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -570,12 +770,12 @@ section .card-sec {
 
 .card-sec img {
     width: 48%;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .card-sec h4 {
     width: 90%;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .card-sec p {
@@ -597,6 +797,37 @@ section .card-sec {
     cursor: not-allowed;
     transition: 0.3s ease;
     margin-bottom: 10px;
+}
+
+/* Card Adventure */
+.card-item h3,
+.card-item p,
+.card-item button {
+    font-size: 16px;  /* Tamanho fixo */
+    line-height: 1.2;
+}
+
+/* Card Administração */
+.card-adm h3,
+.card-adm p,
+.card-adm button {
+    font-size: 16px;  /* Tamanho fixo */
+    line-height: 1.2;
+}
+
+/* Card Security */
+.card-sec h3,
+.card-sec p,
+.card-sec button {
+    font-size: 16px;  /* Tamanho fixo */
+    line-height: 1.2;
+}
+
+.card-sec button {
+    margin-bottom: 10px;
+}
+.card-adm button {
+    margin-bottom: 5px;
 }
 
 
@@ -721,12 +952,13 @@ section .texto {
 footer {
     width: 100%;
     height: 250px;
+    background-color: var(--orange); /* Cor original */
+    color: white; /* Cor do texto original */
 }
 
 footer .main {
     width: 100%;
     height: 200px;
-    background-color: var(--orange);
     padding: 20px 0px;
 }
 
