@@ -17,14 +17,210 @@
 
 /*Config-Geral*/
 
-html,
-body {
+html, body {
     width: 100%;
     overflow-x: hidden;
     background-color: #00285f;
     scroll-behavior: smooth;
+    font-size: 16px;
+    transition: font-size 0.3s ease;
 }
 
+body {
+    transition: background-color 0.3s;
+}
+
+/* Estilo para modo de contraste */
+body.high-contrast {
+    background-color: #333;
+    color: white;
+}
+
+/* Modificar o header */
+body.high-contrast header {
+    background-color: #222;
+    color: white;
+}
+
+/* Modificar as sections */
+body.high-contrast section {
+    background-color: #333;
+    color: white;
+}
+
+/* Estilo para o footer no modo de contraste */
+body.high-contrast footer {
+    background-color: #444; /* Fundo preto no modo de contraste */
+    color: white; /* Cor do texto branca no modo de contraste */
+}
+
+body.high-contrast footer a {
+    color: #f78b00; /* Links do footer em cor laranja */
+}
+
+/* Modificar o 'last' (último bloco) */
+body.high-contrast .last {
+    background-color: #111;
+    color: white;
+}
+
+/* Modificar os links */
+body.high-contrast a {
+    color: #f78b00; /* Links em laranja */
+}
+
+/* Alterando o comportamento dos ícones no footer */
+body.high-contrast .footer-social img {
+    filter: brightness(0) invert(1); /* Inverter cores para ícones sociais visíveis */
+}
+
+/* Modificar o texto nos botões */
+body.high-contrast button {
+    background-color: #555;
+    color: white;
+}
+
+body.high-contrast .review-card {
+    transition: background-color 0.3s;
+    background-color: #333;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+body.high-contrast .review-card strong {
+    color: white;
+}
+
+body.high-contrast section#average-rating.average-rating {
+    background-color: #333;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+body.high-contrast section#average-rating.average-rating h3 {
+    color: white;
+}
+body.high-contrast section#average-rating.average-rating p {
+    color: white;
+}
+body.high-contrast section#average-rating.average-rating .average-score {
+    color: white;
+}
+
+body.high-contrast .add-review .message {
+    background-color: #666;
+    color: white;
+}
+body.high-contrast .add-review .message p {
+    color: white;
+}
+
+body.high-contrast .download-buttons .btn {
+    background-color: #666;
+    color: white;
+}
+
+body.high-contrast .hero .hero-content button {
+    background-color: #666;
+    color: white;
+    transition: background-color 0.3s;
+}
+body.high-contrast .hero .favorite-container {
+    background-color: #666;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+body.high-contrast .main .about-content .about-image {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+body.high-contrast .review button {
+    background-color: #666;
+    transition: background-color 0.3s;
+    color: white;
+}
+
+/* Modificar o painel de acessibilidade */
+body.high-contrast .accessibility-controls {
+    background-color: #444;
+    color: white;
+}
+
+body.high-contrast #open-accessibility button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar os links no footer */
+body.high-contrast .footer-links h4,
+body.high-contrast .footer-links h6 {
+    color: white;
+}
+
+/* Estilo do botão quando o modo de alto contraste está ativado */
+body.high-contrast #open-accessibility {
+    background-color: #f78b00; /* Cor de fundo laranja */
+    color: white; /* Cor do texto em branco */
+}
+
+/* Estilo do botão quando o modo de contraste não está ativado */
+body:not(.high-contrast) #open-accessibility {
+    background-color: #fff;
+    color: black;
+}
+
+
+/* Estilo do painel de acessibilidade */
+.accessibility-controls {
+    font-size: 16px;
+    position: fixed;
+    bottom: 80px; /* Distância inicial de onde o botão está */
+    right: 20px; /* Posiciona à direita */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(228, 226, 223, 0.5);
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(20px); /* Inicialmente movido para baixo */
+    visibility: hidden; /* Inicialmente oculto */
+    transition: opacity 0.5s ease, transform 0.5s ease-in-out; /* Animações de opacidade e movimento */
+    z-index: 9999;
+}
+
+/* Mostrar o painel com animação */
+.accessibility-controls.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Ao aparecer, o painel desliza para o lugar correto */
+}
+
+/* Estilo para o botão de abrir acessibilidade */
+#open-accessibility {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(205, 142, 17, 0.5);
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Estilo para o botão de fechar */
+#close-accessibility {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.accessibility-controls button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+ 
 /*Cabeçalho*/
 
 header {
@@ -296,6 +492,10 @@ nav ul button:hover {
 }
 
 /* Início */
+
+section {
+    transition: background-color 0.3s;
+}
 
 .hero {
     position: relative;
@@ -931,13 +1131,15 @@ nav ul button:hover {
 
 footer {
     width: 100%;
+    background-color: var(--orange);
+    transition: background-color 0.3s;
     height: 250px;
 }
 
 footer .main {
     width: 100%;
     height: 200px;
-    background-color: var(--orange);
+
     padding: 20px 0px;
 }
 
@@ -981,6 +1183,7 @@ footer .last {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s;
 }
 
 /*Resposividade*/

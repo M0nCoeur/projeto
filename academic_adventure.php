@@ -80,33 +80,45 @@ $reviews = $stmt_reviews->fetchAll();
 </head>
 
 <body>
+
+  <div class="accessibility-controls" id="accessibility-controls">
+    <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+    <button id="reset-font-size" aria-label="Restaurar o tamanho da fonte original">A</button>
+    <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+    <button id="toggle-contrast" aria-label="Alternar contraste">Contraste</button>
+    <button id="close-accessibility" aria-label="Fechar painel de acessibilidade">Fechar</button>
+  </div>
+
+  <!-- Botão para abrir o painel -->
+  <button id="open-accessibility" aria-label="Abrir painel de acessibilidade">Acessibilidade</button>
+
   <header>
     <div class="content">
-      <nav>
+      <nav aria-label="Menu de navegação principal">
         <p class="brand">
           <a href="index.php">
             <img src="/HTML_PROJECT/assets/Logo2.png" alt="Logo GameVerse" class="logo">
           </a>
         </p>
         <ul>
-          <li><a href="index.php#games">Jogos</a></li>
-          <li><a href="index.php#galery">Notícias</a></li>
-          <li><a href="index.php#about">Sobre</a></li>
+          <li><a href="#games" aria-label="Ir para a seção de jogos">Jogos</a></li>
+          <li><a href="#galery" aria-label="Ir para a seção de notícias">Notícias</a></li>
+          <li><a href="#about" aria-label="Ir para a seção sobre o site">Sobre</a></li>
           <?php if (isset($_SESSION['usuario'])): ?>
             <li class="dropdown">
-              <div class="user-container" onclick="toggleDropdown()">
+              <div class="user-container" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
                 <span>Olá, <?php echo htmlspecialchars($_SESSION['usuario']); ?></span>
                 <i class="uil uil-user-circle"></i>
               </div>
-              <ul class="dropdown-menu">
-                <li><a href="myaccount.php">Minha Conta</a></li>
-                <li><a href="jogos_favoritos.php">Jogos Favoritos</a></li>
-                <li><a href="reviews.php">Minhas Avaliações</a></li>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="myaccount.php" role="menuitem" aria-label="Acessar a conta">Minha Conta</a></li>
+                <li><a href="jogos_favoritos.php" role="menuitem" aria-label="Ver jogos favoritos">Jogos Favoritos</a></li>
+                <li><a href="reviews.php" role="menuitem" aria-label="Acessar as avaliações">Minhas Avaliações</a></li>
               </ul>
             </li>
-            <li><button onclick="window.location.href='logout.php'">Sair</button></li>
+            <li><button onclick="window.location.href='logout.php'" aria-label="Sair do site">Sair</button></li>
           <?php else: ?>
-            <li><button onclick="window.location.href='login.php'">Entrar</button></li>
+            <li><button onclick="window.location.href='login.php'" aria-label="Fazer login">Login</button></li>
           <?php endif; ?>
         </ul>
       </nav>
@@ -299,6 +311,7 @@ LIMIT 5
   <script src="/HTML_PROJECT/scripts/drop.js"></script>
   <script src="/HTML_PROJECT/scripts/game.js"></script>
   <script src="/HTML_PROJECT/scripts/star.js"></script>
+  <script src="/HTML_PROJECT/scripts/accessibility.js"></script>
   <script>
     function validateReviewForm() {
       const comentario = document.getElementById('comentario').value.trim();
