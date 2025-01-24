@@ -113,8 +113,7 @@ $reviews = $stmt_reviews->fetchAll(PDO::FETCH_ASSOC);
       <div class="content footer-links">
         <div class="footer-company">
           <h4>Nosso Site</h4>
-          <h6>Sobre</h6>
-          <h6>Contato</h6>
+          <a href="/HTML_PROJECT/about.php">Sobre Nós</a>
         </div>
         <div class="footer-social">
           <h4>Mantenha-se Conectado</h4>
