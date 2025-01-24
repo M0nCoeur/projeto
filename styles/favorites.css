@@ -22,7 +22,209 @@ body {
     overflow-x: hidden;
     background: radial-gradient(#ffce8e, #f78b00);
     scroll-behavior: smooth;
+    transition: background-color 0.3s;
+    transition: font-size 0.3s ease;
 }
+
+body.large-font {
+    font-size: 18px;
+}
+
+body.small-font {
+    font-size: 14px;
+}
+
+body.high-contrast .catalog {
+    background-color: #333;
+    color: white;
+}
+
+body.high-contrast .catalog h3 {
+    color: white;
+}
+
+body.high-contrast .catalog p {
+    color: white;
+}
+
+body.high-contrast header {
+    background-color: #222;
+    color: white;
+}
+
+body.high-contrast header a {
+    color: white;
+}
+
+body.high-contrast header button {
+    color: white;
+    border: 1px solid white;
+    background-color: #555;
+}
+
+body.high-contrast header button:hover {
+    color: white;
+    border: 1px solid white;
+    background-color: #666;
+}
+
+/* Modificar o card-sec */
+body.high-contrast .card-item_fav-2 {
+    background-color: #444;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+body.high-contrast .card-item_fav-2 p {
+    color: white;
+}
+
+body.high-contrast .card-item_fav-2 button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar o card-item */
+body.high-contrast .card-item_fav-0 {
+    background-color: #444;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+body.high-contrast .card-item_fav-0 p {
+    color: white;
+}
+
+body.high-contrast .card-item_fav-0 button {
+    background-color: #555;
+    color: white;
+}
+
+/* Modificar o card-adm */
+body.high-contrast .card-item_fav-1 {
+    background-color: #444;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+body.high-contrast .card-item_fav-1 p {
+    color: white;
+}
+
+body.high-contrast .card-item_fav-1 button {
+    background-color: #555;
+    color: white;
+}
+
+body.high-contrast .card-item_fav-1 button:hover {
+    background-color: #666;
+    color: white;
+}
+
+body.high-contrast .card-item_fav-2 button:hover {
+    background-color: #666;
+    color: white;
+}
+
+body.high-contrast .card-item_fav-0 button:hover {
+    background-color: #666;
+    color: white;
+}
+
+/* Estilo para o footer no modo de contraste */
+body.high-contrast footer {
+    background-color: #444; /* Fundo preto no modo de contraste */
+    color: white; /* Cor do texto branca no modo de contraste */
+}
+
+body.high-contrast footer a {
+    color: #f78b00; /* Links do footer em cor laranja */
+}
+
+/* Modificar o 'last' (último bloco) */
+body.high-contrast .last {
+    background-color: #111;
+    transition: background-color 0.3s;
+    color: white;
+}
+
+/* Modificar o painel de acessibilidade */
+body.high-contrast .accessibility-controls {
+    background-color: #444;
+    color: white;
+}
+
+body.high-contrast #open-accessibility button {
+    background-color: #555;
+    color: white;
+}
+
+/* Estilo do botão quando o modo de alto contraste está ativado */
+body.high-contrast #open-accessibility {
+    background-color: #f78b00; /* Cor de fundo laranja */
+    color: white; /* Cor do texto em branco */
+}
+
+/* Estilo do botão quando o modo de contraste não está ativado */
+body:not(.high-contrast) #open-accessibility {
+    background-color: #fff;
+    color: black;
+}
+
+/* Estilo do painel de acessibilidade */
+.accessibility-controls {
+    font-size: 16px;
+    position: fixed;
+    bottom: 80px; /* Distância inicial de onde o botão está */
+    right: 20px; /* Posiciona à direita */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(228, 226, 223, 0.5);
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(20px); /* Inicialmente movido para baixo */
+    visibility: hidden; /* Inicialmente oculto */
+    transition: opacity 0.5s ease, transform 0.5s ease-in-out; /* Animações de opacidade e movimento */
+    z-index: 9999;
+}
+
+/* Mostrar o painel com animação */
+.accessibility-controls.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Ao aparecer, o painel desliza para o lugar correto */
+}
+
+/* Estilo para o botão de abrir acessibilidade */
+#open-accessibility {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(205, 142, 17, 0.5);
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Estilo para o botão de fechar */
+#close-accessibility {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.accessibility-controls button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
 
 /*Cabeçalho*/
 
@@ -574,13 +776,13 @@ section .card-item_fav-2 {
 
 footer {
     width: 100%;
+    background-color: var(--orange);
     height: 250px;
 }
 
 footer .main {
     width: 100%;
     height: 200px;
-    background-color: var(--orange);
     padding: 20px 0px;
 }
 

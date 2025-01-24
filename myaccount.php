@@ -70,7 +70,6 @@ if (isset($_POST['update_account'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -82,6 +81,16 @@ if (isset($_POST['update_account'])) {
 </head>
 
 <body>
+    <div class="accessibility-controls" id="accessibility-controls">
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="reset-font-size" aria-label="Restaurar o tamanho da fonte original">A</button>
+        <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="toggle-contrast" aria-label="Alternar contraste">Contraste</button>
+        <button id="close-accessibility" aria-label="Fechar painel de acessibilidade">Fechar</button>
+    </div>
+
+    <!-- Botão para abrir o painel -->
+    <button id="open-accessibility" aria-label="Abrir painel de acessibilidade">Acessibilidade</button>
     <header>
         <div class="content">
             <nav>
@@ -177,6 +186,7 @@ if (isset($_POST['update_account'])) {
 
     <script src="/HTML_PROJECT/scripts/drop.js"></script>
     <script src="/HTML_PROJECT/scripts/myaccount.js"></script>
+    <script src="/HTML_PROJECT/scripts/accessibility.js"></script>
 </body>
 
 </html>
