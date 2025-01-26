@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <ul>
                     <li><a href="index.php#games">Jogos</a></li>
                     <li><a href="index.php#galery">Notícias</a></li>
-                    <li><a href="index.php#about">Sobre</a></li>
+                    <li><a href="about.php">Sobre Nós</a></li>
 
                     <?php if (isset($_SESSION['usuario'])): ?>
                         <li class="dropdown">

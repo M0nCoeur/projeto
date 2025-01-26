@@ -56,7 +56,7 @@ if ($user_id) {
         <ul>
           <li><a href="#games" aria-label="Ir para a seção de jogos">Jogos</a></li>
           <li><a href="#galery" aria-label="Ir para a seção de notícias">Notícias</a></li>
-          <li><a href="#about" aria-label="Ir para a seção sobre o site">Sobre</a></li>
+          <li><a href="about.php" aria-label="Ir para a seção sobre o site">Sobre Nós</a></li>
 
           <?php if (isset($_SESSION['usuario'])): ?>
             <!-- Dropdown para o usuário logado -->
@@ -80,9 +80,9 @@ if ($user_id) {
       <div class="header-block">
         <div class="carousel-header">
           <div class="imagens-header fade-header" aria-live="polite">
-            <img src="/HTML_PROJECT/assets/Group 2.png" alt="Imagem de destaque 1">
-            <img src="/HTML_PROJECT/assets/Group 2.png" alt="Imagem de destaque 2">
-            <img src="/HTML_PROJECT/assets/Group 1.png" alt="Imagem de destaque 3">
+            <img src="/HTML_PROJECT/assets/Slide01.png" alt="Imagem de destaque 1">
+            <img src="/HTML_PROJECT/assets/Slide02.png" alt="Imagem de destaque 2">
+            <img src="/HTML_PROJECT/assets/Slide03.png" alt="Imagem de destaque 3">
           </div>
           <button class="button-header prev-header" onclick="move(-1)" aria-label="Imagem anterior">&#10094;</button>
           <button class="button-header next-header" onclick="move(1)" aria-label="Próxima imagem">&#10095;</button>
@@ -168,10 +168,9 @@ if ($user_id) {
       </div>
       <div class="carousel">
         <div class="imagens fade" aria-live="polite">
-          <img src="/HTML_PROJECT/assets/slide4.png" alt="Imagem de notícia 1">
+          <img src="/HTML_PROJECT/assets/slide4_1.png" alt="Imagem de notícia 1">
           <img src="/HTML_PROJECT/assets/slide5.png" alt="Imagem de notícia 2">
           <img src="/HTML_PROJECT/assets/Slide6.png" alt="Imagem de notícia 3">
-          <img src="/HTML_PROJECT/assets/Slide1.png" alt="Imagem de notícia 4">
         </div>
         <button class="button prev" onclick='move(-1)' aria-label="Imagem anterior">&#10094;</button>
         <button class="button next" onclick='move(1)' aria-label="Próxima imagem">&#10095;</button>

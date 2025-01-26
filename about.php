@@ -41,9 +41,9 @@ include('conexao.php');
                     </a>
                 </p>
                 <ul>
-                    <li><a href="#games" aria-label="Ir para a seção de jogos">Jogos</a></li>
-                    <li><a href="#galery" aria-label="Ir para a seção de notícias">Notícias</a></li>
-                    <li><a href="sobre.php" aria-label="Ir para a página Sobre Nós">Sobre Nós</a></li> <!-- Adicionado o link -->
+                    <li><a href="index.php#games" aria-label="Ir para a seção de jogos">Jogos</a></li>
+                    <li><a href="index.php#galery" aria-label="Ir para a seção de notícias">Notícias</a></li>
+                    <li><a href="index.php" aria-label="Ir para a página Sobre Nós">Início</a></li> <!-- Adicionado o link -->
                     <?php if (isset($_SESSION['usuario'])): ?>
                         <li class="dropdown">
                             <div class="user-container" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
@@ -75,20 +75,22 @@ include('conexao.php');
         <section class="sobre-conteudo">
             <div class="sobre-texto">
                 <h2>Nossa Missão</h2>
-                <p>A GameVerse é dedicada a proporcionar experiências de aprendizado envolventes por meio de jogos acadêmicos. Nosso objetivo é unir diversão e educação, criando um ambiente interativo que inspire curiosidade e criatividade nos usuários.</p>
+                <p>Na GameVerse, temos o compromisso de transformar o aprendizado em uma experiência inovadora e cativante. Nossa missão é unir educação e diversão, oferecendo soluções personalizadas em forma de jogos que inspiram criatividade, curiosidade e engajamento.</p>
             </div>
 
             <div class="sobre-texto">
-                <h2>O Que Fazemos</h2>
-                <p>Desenvolvemos jogos educativos únicos, adaptados para várias faixas etárias e disciplinas acadêmicas. Nossa plataforma permite aos usuários explorar conteúdos de forma dinâmica, ao mesmo tempo que oferece ferramentas para professores e instituições de ensino.</p>
+                <h2>O Que Fazemos?</h2>
+                <p>Desenvolvemos jogos educacionais sob medida, projetados para atender às necessidades específicas de escolas, educadores e instituições de ensino. Trabalhamos em parceria com nossos clientes para criar experiências únicas, adaptadas às diferentes faixas etárias e disciplinas acadêmicas, promovendo um aprendizado dinâmico e interativo.</p>
             </div>
 
             <div class="sobre-texto">
                 <h2>Por Que Escolher a GameVerse?</h2>
                 <ul>
-                    <li><strong>Jogos Inovadores:</strong> Projetados para estimular o aprendizado e o engajamento.</li>
-                    <li><strong>Interface Amigável:</strong> Fácil de navegar para todos os públicos.</li>
-                    <li><strong>Comunidade Ativa:</strong> Participe de uma comunidade de jogadores e educadores que compartilham a mesma paixão.</li>
+                    <li><strong>Soluções Personalizadas: </strong> Criamos jogos que atendem às demandas específicas de educadores e escolas, garantindo alinhamento com seus objetivos.</li>
+                    <li><strong>Interface Intuitiva:</strong> Experiência acessível para alunos, professores e gestores educacionais.</li>
+                    <li><strong>Jogos Inovadores:</strong> Nossos projetos são desenvolvidos para engajar e estimular o aprendizado de forma criativa e divertida.</li>
+                    <li><strong>Apoio ao Educador: </strong> Fornecemos ferramentas e suporte que maximizam o impacto educacional dos jogos desenvolvidos.</li>
+                    <li><strong>Colaboração Constante:</strong> Trabalhamos lado a lado com nossos parceiros para garantir que cada jogo atenda plenamente às suas expectativas.</li>
                 </ul>
             </div>
         </section>
@@ -148,7 +150,7 @@ include('conexao.php');
                     <!-- Membro 9 -->
                     <div class="equipe-card">
                         <img src="/HTML_PROJECT/assets/aluno8.jpeg" alt="Foto do Desenvolvedor Full Stack">
-                        <h3>Logian Lucky</h3>
+                        <h3>Logan Lucky</h3>
                         <p>Designer Gráfico</p>
                     </div>
                     <!-- Membro 10 -->

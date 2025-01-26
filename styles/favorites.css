@@ -26,6 +26,11 @@ body {
     transition: font-size 0.3s ease;
 }
 
+body.high-contrast {
+    background: #333;
+    color: white;
+}
+
 body.large-font {
     font-size: 18px;
 }
@@ -53,7 +58,11 @@ body.high-contrast header {
 }
 
 body.high-contrast header a {
-    color: white;
+    color: #f78b00;
+}
+
+body.high-contrast ul li a:hover {
+    color: #ffffff83;
 }
 
 body.high-contrast header button {

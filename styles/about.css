@@ -51,6 +51,10 @@ body.high-contrast header a {
     color: #f78b00;
 }
 
+body.high-contrast ul li a:hover {
+    color: #ffffff83;
+}
+
 body.high-contrast header button {
     background-color: #555;
     color: white;

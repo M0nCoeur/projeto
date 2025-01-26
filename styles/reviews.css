@@ -78,9 +78,12 @@ body.high-contrast .last {
     color: white;
 }
 
-/* Modificar os links */
-body.high-contrast a {
-    color: #f78b00; /* Links em laranja */
+body.high-contrast header a {
+    color: #f78b00;
+}
+
+body.high-contrast ul li a:hover {
+    color: #ffffff83;
 }
 
 /* Alterando o comportamento dos ícones no footer */

@@ -101,9 +101,9 @@ $reviews = $stmt_reviews->fetchAll();
           </a>
         </p>
         <ul>
-          <li><a href="#games" aria-label="Ir para a seção de jogos">Jogos</a></li>
-          <li><a href="#galery" aria-label="Ir para a seção de notícias">Notícias</a></li>
-          <li><a href="#about" aria-label="Ir para a seção sobre o site">Sobre</a></li>
+          <li><a href="index.php#games" aria-label="Ir para a seção de jogos">Jogos</a></li>
+          <li><a href="index.php#galery" aria-label="Ir para a seção de notícias">Notícias</a></li>
+          <li><a href="about.php" aria-label="Ir para a seção sobre o site">Sobre Nós</a></li>
           <?php if (isset($_SESSION['usuario'])): ?>
             <li class="dropdown">
               <div class="user-container" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
@@ -284,6 +284,7 @@ LIMIT 5
     <div class="main">
       <div class="content footer-links">
         <div class="footer-company">
+        <h4>Nosso Site</h4>
         <a href="/HTML_PROJECT/about.php">Sobre Nós</a>
         </div>
         <div class="footer-social">

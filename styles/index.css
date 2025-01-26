@@ -134,10 +134,14 @@ body.high-contrast .filter-card input {
     color: wheat;
 }
 
-/* Modificar os links */
-body.high-contrast a {
-    color: #f78b00; /* Links em laranja */
+body.high-contrast header a {
+    color: #f78b00;
 }
+
+body.high-contrast ul li a:hover {
+    color: #ffffff83;
+}
+
 
 /* Alterando o comportamento dos ícones no footer */
 body.high-contrast .footer-social img {
@@ -862,7 +866,7 @@ section .texto {
 .carousel {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .imagens {

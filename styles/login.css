@@ -351,3 +351,90 @@ footer .last {
     align-items: center;
     justify-content: center;
 }
+
+/*Resposividade*/
+
+@media (max-width: 576px) {
+    nav ul li {
+        display: none;
+    }
+
+    .header-block img {
+        width: 540px;
+    }
+
+    .header-block .text {
+        position: absolute;
+        bottom: 10%;
+        left: 15%;
+    }
+
+    section .filter-card {
+        width: 390px;
+        padding: 0px 10px;
+    }
+
+    .search-input {
+        max-width: 700px;
+        min-width: 240px;
+    }
+
+    .search-button {
+        max-width: 150px;
+        min-width: 80px;
+    }
+
+    .card-item img {
+        width: 50%;
+        padding: 0px 10px;
+    }
+    .card-adm img {
+        width: 50%;
+        padding: 0px 10px;
+    }
+    .card-sec img {
+        width: 30%;
+        padding: 0px 10px;
+    }
+
+    .galery {
+        margin-top: 100px;
+    }
+
+    .galery img {
+        width: 390px;
+        padding: 0px 10px;
+    }
+
+    .texto {
+        margin-bottom: 20px;
+    }
+
+    .galery-content {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .features {
+        height: 100%;
+    }
+
+    .feature-card-block {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        height: 100%;
+    }
+
+    footer .main {
+        height: 100%;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        padding-left: 10%;
+    }
+}

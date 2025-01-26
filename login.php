@@ -191,14 +191,6 @@ if (isset($_POST['cadastrar'])) {
             <i class="uil uil-lock icon"></i>
             <i class="uil uil-eye-slash showHidePw"></i>
           </div>
-
-          <div class="checkbox-text">
-            <div class="checkbox-content">
-              <input type="checkbox" id="termCon" />
-              <label for="termCon" class="text">Aceito todos os termos e condições</label>
-            </div>
-          </div>
-
           <div class="input-field button">
             <input type="submit" name="cadastrar" value="Cadastrar" />
           </div>
