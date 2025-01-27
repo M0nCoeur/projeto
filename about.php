@@ -113,7 +113,7 @@ include('conexao.php');
                     </div>
                     <!-- Membro 3 -->
                     <div class="equipe-card">
-                        <img src="/HTML_PROJECT/assets/car-header.png" alt="Foto do Designer">
+                        <img src="/HTML_PROJECT/assets/aluno10.jpeg" alt="Foto do Designer">
                         <h3>Caio Carolino</h3>
                         <p>Desenvolvedor de jogos</p>
                     </div>
