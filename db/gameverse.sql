@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 -- Banco de dados: `gameverse`
 --
 
+CREATE DATABASE IF NOT EXISTS `gameverse` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `gameverse`;
 -- --------------------------------------------------------
 
 --
