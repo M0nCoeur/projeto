@@ -191,7 +191,7 @@ include('conexao.php');
             </div>
         </div>
         <div class="last">
-            &copy; 2025 GameVerse
+            GameVerse
         </div>
     </footer>
 
