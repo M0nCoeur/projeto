@@ -111,9 +111,9 @@ $reviews = $stmt_reviews->fetchAll();
                 <i class="uil uil-user-circle"></i>
               </div>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="myaccount.php" role="menuitem" aria-label="Acessar a conta">Minha Conta</a></li>
+                <li><a href="myaccount.php" role="menuitem" aria-label="Acessar a conta">Conta</a></li>
                 <li><a href="jogos_favoritos.php" role="menuitem" aria-label="Ver jogos favoritos">Jogos Favoritos</a></li>
-                <li><a href="reviews.php" role="menuitem" aria-label="Acessar as avaliações">Minhas Avaliações</a></li>
+                <li><a href="reviews.php" role="menuitem" aria-label="Acessar as avaliações">Avaliações</a></li>
               </ul>
             </li>
             <li><button onclick="window.location.href='logout.php'" aria-label="Sair do site">Sair</button></li>

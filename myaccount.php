@@ -111,9 +111,9 @@ if (isset($_POST['update_account'])) {
                                 <i class="uil uil-user-circle"></i>
                             </div>
                             <ul class="dropdown-menu">
-                                <li><a href="myaccount.php">Minha Conta</a></li>
+                                <li><a href="myaccount.php">Conta</a></li>
                                 <li><a href="jogos_favoritos.php">Jogos Favoritos</a></li>
-                                <li><a href="reviews.php">Minhas Avaliações</a></li>
+                                <li><a href="reviews.php">Avaliações</a></li>
                             </ul>
                         </li>
                         <li><button onclick="window.location.href='logout.php'">Sair</button></li>
